@@ -1,0 +1,22 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 145: expected statement.
+    "I go to the small stage.":
+                              ^
+
+File "game/script.rpy", line 151: expected statement.
+    "I go to the shopkeeper's stand.":
+                                     ^
+
+File "game/script.rpy", line 157: expected statement.
+    "I go to the canals.":
+                         ^
+
+File "game/script.rpy", line 163: expected statement.
+    "I beg for money.":
+                      ^
+
+Ren'Py Version: Ren'Py 8.0.3.22090809
+Tue May  2 15:02:42 2023

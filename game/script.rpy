@@ -152,9 +152,9 @@ label plaza:
     define p=Character("Puck",color="#308CDD")
     #change bg plaza
     "{cps=30}You find yourself in a large plaza, with stands and attractions filling the usually empty space.{/cps}"
-    "{cps=30}People seem to be less clumped together here, which allows you enough space to ambulate of your own volitons.{/cps}"
+    "{cps=30}People seem to be less clumped together here, which allows you enough space to ambulate of your own voliton.{/cps}"
     "{cps=30}You see a small stage, an inviting looking shopkeeper's stand, and a sign pointing to the canals.{/cps}"
-    "{cps=30}Where do you go ?{/cps}"
+    "{cps=30}Where do you go?{/cps}"
 
 label plazamenu:
     menu:
@@ -183,7 +183,7 @@ label C1first:
     "{cps=30}You walk up to the small stage...{/cps}"
     "{cps=30}It seems empty, like the show hasn't started yet.{/cps}"
     "{cps=30}You prepare to leave before...{/cps}"
-    p"{cps=30}{=+size}Heeeellllloooo there !{/size}{/cps}"
+    p"{cps=30}{size=+10}Heeeellllloooo there !{/size}{/cps}"
     "{cps=30}You hear a voice.{/cps}"
     #enter Puck
     p"{cps=30}Welcome, welcome, welcome ! I am {color=#308CDD}Puck{/color}, performer, reformer, and adorer of anyone that will tolerate me.{/cps}"
@@ -219,9 +219,9 @@ label D1:
     p "{cps=30}Well friend, I have much to tell !{/cps}" 
     "{cps=30}You can see Puck's demeanor change, like that of an unwinding spring.{/cps}" 
     "{cps=30}He has wanted to talk to someone about his past for a very long time.{/cps}" 
-    p "{cps=30}I started my life as a lowly bucher’s son, dreaming of the world outside my rural town in the tuscan countryside.{/cps}" 
+    p "{cps=30}I started my life as a lowly butcher’s son, dreaming of the world outside my rural town in the tuscan countryside.{/cps}" 
     p "{cps=30}I found my release in theatre and performance, but every night I was forced back into my humdrum home.{/cps}" 
-    p "{cps=30}Thats why I hatched a plan… I tricked my father into leaving his keys on the table then used a distraction to draw him outside and buy me enough time to take the car and drive off on the open road!{/cps}" 
+    p "{cps=30}Thats why I hatched a plan… I tricked my father into leaving his keys on the table then used a distraction to draw him outside and buy me enough time to take his car and drive off on the open road!{/cps}" 
     p "{cps=30}Freedom was mine at last!{/cps}" 
     p "{cps=30}I found others on the road who shared my view on art and life, and we formed a quaint theater company together: ‘La compagnia dello specchio e della mente!’{/cps}" 
     p "{cps=30}‘The company of mirror and mind’.{/cps}" 
@@ -244,7 +244,7 @@ label D2:
 label D3:
     p"{cps=30}The show is going to be in four hours, please come back later!{/cps}"
     p"{cps=30}It is going to be a thrilling tale of love, triumphant over dark forces in the world!{/cps}"
-    p"{cps=30}A five act puppet show, with one actor in 8 roles!{/cps}"
+    p"{cps=30}A five act puppet show, with one actor in eight roles!{/cps}"
     "{cps=30}Sounds like an absolute trainwreck…{/cps}"
     "{cps=30}You should see it as soon as possible.{/cps}"
 
@@ -269,30 +269,31 @@ label C2first:
     "{cps=30}A strange man in a porcelain mask and purple robes steps out from the red curtain.{/cps}"
     "{cps=30}He speaks in a calm and tired yet rushed and irritated tone.{/cps}"
     #Enter Pale
-    "{cps=30}Yo, what do ya want ?{/cps}"
+    pa"{cps=30}Yo, what do ya want ?{/cps}"
 
     jump Emenu
 
 label C2:
+    p"{cps=30}Yo, what do ya want?{/cps}"
     jump Emenu
 
 label Emenu:
     menu:
-        "Can you tell me about yourself ?":
-            jump D1
+        "Can you tell me about yourself?":
+            jump E1
 
-           
-        "Can you tell me about the locals ?":
-            jump D2
 
-        "Can I have some money ?":
-            jump D3
+        "Can you tell me about the locals?":
+            jump E2
+
+        "Can I have some money?":
+            jump E3
            
         "I return to the plaza.":
-            jump D4
+            jump E4
 
 label E1:
-    pa"{cps=30}My name is {color=#AB2BE4}Pale{/color}, I am a merchant...{/cps}"
+    pa"{cps=30}My name is {color=#AB2BE4}Pale{/color}, I am a merchant.{/cps}"
     "{cps=30}The agressively vague description bugs you.{/cps}"
     "{cps=30}You decide to ask him to tell you more.{/cps}"
     pa"{cps=30}Not much more to tell, pal.{/cps}"
@@ -307,7 +308,7 @@ label E2:
     pa"{cps=30}The locals? Sure.{/cps}"
     pa"{cps=30}There are four locals you should care about:{/cps}"
     pa"{cps=30}Path, Poem, Puck, and Pray.{/cps}"
-    pa"{cps=30}There, told you about the locals{/cps}"
+    pa"{cps=30}There, told you about the locals.{/cps}"
     pa"{cps=30}Anything else?{/cps}"
     jump Emenu
 
@@ -318,13 +319,13 @@ label E3:
 
 label Fmenu:
     menu:
-        "Okay, nothing else to do":
+        "Okay, nothing else to do.":
             if not choice_F1_made:
                 jump F1
             else:
-                "{cps=30}You can't do that again{/cps}"
+                "{cps=30}You can't do that again.{/cps}"
                 jump Fmenu
-        "Uh sorry, I meant free money":
+        "Uh sorry, I meant free money.":
             jump F2
 
 label F1:
@@ -362,29 +363,29 @@ label C3first:
 
     #Enter Path
 
-    pat"{cps=30}{size=+10}Oh !{/size}{/cps}"
+    pat"{cps=30}{size=+10}Oh!{/size}{/cps}"
     "{cps=30}You see a nervous gondalier, whose daydreams have been interrupted by your presence.{/cps}"
     "{cps=30}He seems kind, with a deep shyness in his demeanor.{/cps}"
     pat"{cps=30}Uh… bonjourno!{/cps}"
     pat"{cps=30}My name is {color=#DAC432}Path{/color}, I'm a gondolier.{/cps}"
     $ PathMet=True
-    pat"{cps=30}How can I help you, signore/signora ?{/cps}"
+    pat"{cps=30}How can I help you, signore/signora?{/cps}"
     jump Gmenu
 
 label C3:
-    pat"{cps=30}How can I help you, signore/signora ?{/cps}"
+    pat"{cps=30}How can I help you, signore/signora?{/cps}"
     jump Gmenu
 
 label Gmenu:
     menu:
-        "Can you tell me about yourself ?":
+        "Can you tell me about yourself?":
             jump G1
 
            
-        "Can you tell me about the locals ?":
+        "Can you tell me about the locals?":
             jump G2
 
-        "Can I go on a gondola ride ?":
+        "Can I go on a gondola ride?":
             jump G3
            
         "I return to the plaza.":
@@ -395,18 +396,18 @@ label G1:
     "{cps=30}The man shifts around uncomfortably.{/cps}"
     pat"{cps=30}Well, I’m twenty two, for starters.{/cps}"
     pat"{cps=30}Haha…{/cps}"
-    pat"{cps=30}Um, I got this job from my father{/cps}"
-    pat"{cps=30}He and my mother are… {size=-10}gone{/size}.{/cps}"
+    pat"{cps=30}Um, I got this job from my father.{/cps}"
+    pat"{cps=30}He and my mother are… {size=-5}gone{/size}.{/cps}"
     pat"{cps=30}But you know, doing this reminds me of times I spent as a kid !{/cps}"
     pat"{cps=30}My mother and father on the gondola with me, slowly moving through the canals… {/cps}"
     "{cps=30}Path looks out at the water for a moment, both floral and sewage-scented, before meeting your gaze once more.{/cps}"
     pat"{cps=30}It’s a magical memory.{/cps}"
     pat"{cps=30}I’m so lucky… to be here.{/cps}"
-    pat"{cps=30}{size=+10}To be alive.{/size}{/cps}"
+    pat"{cps=30}To be alive.{/cps}"
     jump Gmenu
 
 label G2:
-    pat"{cps=30}The locals ?{/cps}"
+    pat"{cps=30}The locals?{/cps}"
     pat"{cps=30}Theres a lot of wonderful people around here!{/cps}"
     pat"{cps=30}Especially po-{/cps}"
     "{cps=30}He ‘catches’ himself and starts blushing.{/cps}"
@@ -418,19 +419,19 @@ label G2:
 
 label G3:
     pat"{cps=30}Sure! Its a flat rate of 65 money right now, while the carnival is in town.{/cps}"
-    pat"{cps=30}Do you wanna go ?{/cps}"
+    pat"{cps=30}Do you wanna go?{/cps}"
     jump Hmenu
 
 label Hmenu:
     menu:
-        "Yes, I pay 65 Money":
+        "Yes, I pay 65 Money.":
             if money>65:
                 $ money -= 65
                 jump H1
             else:
                 "{cps=30}You don't have enough money.{/cps}"
                 jump Hmenu
-        "No, maybe later":
+        "No, maybe later.":
             jump H2
 
 label H1:
@@ -445,7 +446,7 @@ label H2:
     jump Gmenu
 
 label G4:
-    pat"{cps=30}Okay, talk to you later !{/cps}"
+    pat"{cps=30}Okay, talk to you later!{/cps}"
     jump plazamenu
 
 label C4:
@@ -454,8 +455,8 @@ label C4:
         $ moneymod=2
         $ beggingresult=renpy.random.randint(1, 10) + moneymod
         $ money+=beggingresult
-        "You got [beggingresult] money"
-        "You currently have [money] money"
+        "You got [beggingresult] money."
+        "You currently have [money] money."
         $ beggingresult=0
         jump plazamenu
 
@@ -464,8 +465,8 @@ label C4:
         $ moneymod=1
         $ beggingresult=renpy.random.randint(1, 10) + moneymod
         $ money+=beggingresult
-        "You got [beggingresult] money"
-        "You currently have [money] money"
+        "You got [beggingresult] money."
+        "You currently have [money] money."
         $ beggingresult=0
         jump plazamenu
         
@@ -474,8 +475,8 @@ label C4:
         $ moneymod=-1
         $ beggingresult=renpy.random.randint(1, 10) + moneymod
         $ money+=beggingresult
-        "You got [beggingresult] money"
-        "You currently have [money] money"
+        "You got [beggingresult] money."
+        "You currently have [money] money."
         $ beggingresult=0
         jump plazamenu
 
@@ -483,8 +484,8 @@ label C4:
         $ moneymod=3
         $ beggingresult=renpy.random.randint(1, 10) + moneymod
         $ money+=beggingresult
-        "You got [beggingresult] money"
-        "You currently have [money] money"
+        "You got [beggingresult] money."
+        "You currently have [money] money."
         $ beggingresult=0
         jump plazamenu
 
@@ -497,7 +498,7 @@ label Act2:
     "{cps=30}Or someone.{/cps}"
     "{cps=30}He looks at you for a second, and an idea flashes through his eyes.{/cps}"
     pat"{cps=30}Hey, friend, could you do me a tiny favor?{/cps}"
-    "{cps=30}Normally, you would consider wether or not to accept, but his sincerity wins you over and you blurt out a “sure, what is it?”{/cps}"
+    "{cps=30}Normally, you would consider whether or not to accept, but his sincerity wins you over and you blurt out a “sure, what is it?”{/cps}"
     pat"{cps=30}Can you deliver this letter to Poem?{/cps}"
     pat"{cps=30}If you are going to the church anyway I mean, she usually stays around there with her dad.{/cps}"
     pat"{cps=30}If you could just deliver this letter to her without letting her dad know, I’d be so grateful!{/cps}"
@@ -544,11 +545,11 @@ label I1:
 
 label Jmenu:
     menu:
-        "Can you tell me about yourself ?":
+        "Can you tell me about yourself?":
             jump J1
 
            
-        "Can you tell me about the locals ?":
+        "Can you tell me about the locals?":
             jump J2
 
         "Give him Path's letter.":
@@ -597,7 +598,7 @@ label J3:
     pr"{cps=30}They write these to trick young women into dating them, at which point they mistreat, harm, and use her.{/cps}"
     pr"{cps=30}Young men are only concerned with feeding their own desires…{/cps}"
     "{cps=30}There is venom in his voice, but not the venom of guilt for past actions{/cps}"
-    "{cps=30}It is a hatred stemming from being hurt in the past, his fear for his daughter’s saftey feels like it stems from an old violation of his saftey.{/cps}"
+    "{cps=30}It is a hatred stemming from being hurt in the past, his fear for his daughter’s safety feels like it stems from an old violation of his safety.{/cps}"
     pr"{cps=30}Thank you for bringing this to me.{/cps}"
     pr"{cps=30}Who wrote this?{/cps}"
     jump Kmenu
@@ -644,7 +645,7 @@ label K3:
     jump EndS
 
 label J4:
-    pr"{cps=30}Understood, know that you are always welcome here, child{/cps}"
+    pr"{cps=30}Understood, know that you are always welcome here, child.{/cps}"
     jump Imenu
 
 label I2first:
@@ -698,11 +699,11 @@ label PoemStartBookmark:
 
 label Mmenu:
     menu:
-        "Can you tell me about yourself ?":
+        "Can you tell me about yourself?":
             jump M1
 
            
-        "Can you tell me about the locals ?":
+        "Can you tell me about the locals?":
             jump M2
 
         "Give her the letter.":
@@ -739,12 +740,12 @@ label M3:
     po"{cps=30}You are an amazing writer!{/cps}"
     "{cps=30}She immediately sweeps you into a giant hug, and around the same time you feel your back crack from her embrace you realize that she is much stronger than you.{/cps}"
     "{cps=30}Dangerously stronger than you.{/cps}"
-    "{cps=30}Okay its really starting to hurt now, better say something something quick.{/cps}"
+    "{cps=30}Okay its really starting to hurt now, better say something quick.{/cps}"
     "{cps=30}You let out an “Ow. Ow. Ow” before she lets go of you, tears streaming down her face like paper-thin waterfalls.{/cps}"
     "{cps=30}She smiles, grabs your hand, and runs over to the canal docks.{/cps}"
     "{cps=30}The shock prevents you from fighting against the force exerted on your arm, as she drags you over to the nearby docks.{/cps}"
     po"{cps=30}You there!{/cps}"
-    po"{cps=30}Sir, we would like to book a gondola ride{/cps}"
+    po"{cps=30}Sir, we would like to book a gondola ride!{/cps}"
     "{cps=30}She is pointing at Path, who alights with joy apon seeing her.{/cps}"
     # poem goes to right side screen path fades in left
     pat"{cps=30}Oh… o-of course!{/cps}"
@@ -986,21 +987,21 @@ label End3:
     #chang bg canals
     "{cps=30}You, Poem and Path are slowly moving down the canal. Poem’s eyes are affixed on you, and Path’s eyes are affixed onto her.{/cps}"
     po"{cps=30}So, how are you liking it?{/cps}"
-    "{cps=30}You ask her what she means{/cps}"
+    "{cps=30}You ask her what she means.{/cps}"
     #music cut out
     po"{cps=30}This game.{/cps}"
     po"{cps=30}This is a game, isn’t it?{/cps}"
     "{cps=30}she she sh-{/cps}"
     "{cps=30}She looks terrified{/cps}"
     #change music fade int
-    "{cps=30}She smiles and sighs in a loving way.{/cps}"
-    "{cps=30}Path does the same, looking at her{/cps}"
+    "{cps=30}She smiles and sighs at you in a loving way.{/cps}"
+    "{cps=30}Path does the same, looking at her.{/cps}"
     "{cps=30}You all pull into the dock and she hops out, grabbing your arm.{/cps}"
     "{cps=30}She quickly tips Path and leaves while dragging you behind her.{/cps}"
     "{cps=30}You can see Path has a bouquet of roses that he is holding in his left hand, and when the money enters his outstretched right hand, he looks at it curiously.{/cps}"
     pat"{cps=30}Huh?{/cps}"
     pat"{cps=30}W-Wait!{/cps}"
-    "{cps=30}Poem rounds the corner and Path goes out of sight{/cps}"
+    "{cps=30}Poem rounds the corner and Path goes out of sight.{/cps}"
     #path fade out
     #change bg plaza    
     "{cps=30}Poem moves with an unnatural exuberance.{/cps}"
@@ -1016,15 +1017,15 @@ label End3:
     pat"{cps=30}Wait!{/cps}"
     "{cps=30}It seems like Path is just full on sprinting through the plaza towards you and Poem.{/cps}"
     #path fade in right
-    pat"{cps=30}You f-forgot your parasol{/cps}"
+    pat"{cps=30}You f-forgot your parasol!{/cps}"
     pat"{cps=30}And, ya know.{/cps}"
     pat"{cps=30}Me.{/cps}"
     pat"{cps=30}How is the show?{/cps}"
-    "{cps=30}Poem looks over at him in confusion{/cps}"
+    "{cps=30}Poem looks over at him in confusion.{/cps}"
     po"{cps=30}Thank you.{/cps}"
     po"{cps=20}Uhh…{/cps}"
     po"{cps=30}What’s your name again?{/cps}"
-    "{cps=30}Those words shoot through Path’s heart, but he quickly composes himself{/cps}"
+    "{cps=30}Those words shoot through Path’s heart, but he quickly composes himself.{/cps}"
     pat"{cps=30}Oh, I guess we haven’t talked much.{/cps}"
     pat"{cps=30}Did they not say my name? {/cps}"
     pat"{cps=30}I’m Path.{/cps}"
@@ -1050,13 +1051,13 @@ label End3:
     pat"{cps=30}I don’t wanna force you into doing anything, but do you wanna get coffee and talk later?{/cps}"
     "{cps=30}Poem thinks for a moment.{/cps}"
     "{cps=30}You suddenly become aware that everyone in the audience is staring at you three, and the puppet show has stopped.{/cps}"
-    "{cps=30}You can even see puck peeking down from where he controls his marionettes, looking at you with bated breath.{/cps}"
+    "{cps=30}You can even see Puck peeking down from where he controls his marionettes, looking at you with bated breath.{/cps}"
     "{cps=30}Pale is nearby in his caravan and he is fully not paying attention, doing a sudoku puzzle on a newpaper.{/cps}"
     "{cps=30}Poem finally responds.{/cps}"
     po"{cps=30}Sure.{/cps}"
     "{cps=30}The crowd erupts in claps, whistles and celebration.{/cps}"
     "{cps=30}Path smiles with a big goofy grin on his face.{/cps}"
-    "{cps=30}But first, lets finish watching this show.{/cps}"
+    po"{cps=30}But first, lets finish watching this show.{/cps}"
     "{cps=30}And so it was, Poem and Path sat next to each other, actually interacting for the first time.{/cps}"
     "{cps=30}They did later go to that coffee shop to talk, and they found that they had a lot in common.{/cps}"
     "{cps=30}They both liked similar movies, music, and restaraunts around Venice.{/cps}"
@@ -1068,15 +1069,15 @@ label End3:
     "{cps=30}Sat between that impossible choice, between the love of a woman he had idolized…{/cps}"
     "{cps=30}Or the city he had always known and the world he had lived in, Path had to choose.{/cps}"
     "{cps=30}And he did choose, with a lack of hesitation that would seem out of character to most who new him little.{/cps}"
-    "{cps=30}In later years, when recounting this story, he said that the moment the quandry was posed to him he knew.{/cps}"
+    "{cps=30}In later years, when recounting this story, he said that the moment the quandry was posed to him... he knew.{/cps}"
     "{cps=30}He knew what was right, and would choose it again.{/cps}"
     #change bg black
     "{cps=30}Two months later, Poem would take an airplane out of the city.{/cps}"
     #poem fade out
     "{cps=30}None knew where she was going, not even her father.{/cps}"
     "{cps=30}She simply just disappeared from the face of the world, alive only in the memories of the few people that knew her.{/cps}"
-    "{cps=30}Path would get close to knowing her, but it is a goal he could never reach.{/cps}"
-    "{cps=20}That idea haunts him, and would continue to do so for many a year.{/cps}"
+    "{cps=30}Path got very close to knowing her, but it is a goal he could never reach.{/cps}"
+    "{cps=20}That idea haunts him, and would continue to do so for many a year beyond.{/cps}"
     "{cps=30}{/cps}"
 
 label EndS:

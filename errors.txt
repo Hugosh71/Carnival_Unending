@@ -2,21 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 145: expected statement.
-    "I go to the small stage.":
-                              ^
+File "game/script.rpy", line 620: expected statement.
+    "Path wrote it":
+                   ^
 
-File "game/script.rpy", line 151: expected statement.
-    "I go to the shopkeeper's stand.":
-                                     ^
-
-File "game/script.rpy", line 157: expected statement.
-    "I go to the canals.":
-                         ^
-
-File "game/script.rpy", line 163: expected statement.
-    "I beg for money.":
-                      ^
+File "game/script.rpy", line 622: expected statement.
+    "Puck wrote it":
+                   ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Tue May  2 15:02:42 2023
+Fri May  5 22:49:19 2023

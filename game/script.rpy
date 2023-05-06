@@ -1,6 +1,5 @@
 ﻿init:
-    default persistent.numLaunch=0  
-    default persistent.gamerestart=0  
+    default persistent.restarted=0  
     default Vclothes = False
     default Cclothes = False
     default Mclothes = False
@@ -25,7 +24,6 @@
 
 ################## Prologue
 label start:
-    $ persistent.gamerestart+=1
     "{i}{cps=20}Che cos'è il crollo? Semplice, è la fine di tutto. La morte senza pace, la morte senza senso. Indossate le maschere, bambini, e ignorate la melodia delle bombe.{/cps}{/i}"
     "{cps=30}Your consciousness stirs as sound comes into focus. It’s coming from outside.{/cps}"
     "{cps=30}You roll around in bed as your nerves slowly come back online from slumber, and your sense of smell brings in the brackish water of the canals, the floral breeze of various patios, and the mirad fried pastries and tarts that are being sold out of stands and bakeries nearby.{/cps}"
@@ -630,7 +628,7 @@ label J3:
     jump Kmenu
 
 label Kmenu:
-    if persistent.gamerestart>=3:
+    if persistent.restarted>=3:
         menu:
             "Path wrote it":
                 jump K1
@@ -930,6 +928,7 @@ label End1:
     "{cps=30}It is also the role of a parent to cultivate, and eventually, release their child into the open winds of life.{/cps}"
     "{cps=20}Thus ends our tale, a of love, growth and fear.{/cps}"
     "{cps=30}Ending One: Afraid{/cps}"
+    $ persistent.restarted+=1
     return
 
 
@@ -1048,6 +1047,7 @@ label End2:
     "{cps=30}It would be a major shift for Pray, who lost his station and would die two years later of a heart attack.{/cps}"
     "{cps=20}Thus ends our tale, a tale of love, awkward boat rides, and clever thinking.{/cps}"
     "{cps=20}Ending Two: Happy{/cps}"
+    $ persistent.restarted+=1
     return
     
 label End3:
@@ -1156,6 +1156,7 @@ label End3:
     "{cps=20}That idea haunts him, and would continue to do so for many a year beyond.{/cps}"
     "{cps=30}Thus ends our tale, a tale of love, sadness, and lost possabilities.{/cps}"
     "{cps=30}Ending Three: Sad{/cps}"
+    $ persistent.restarted+=1
     return
 
 label EndS:

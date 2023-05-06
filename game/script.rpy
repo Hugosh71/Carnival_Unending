@@ -1,4 +1,5 @@
 ﻿init:
+    define config.default_music_volume=0.7
     default persistent.restarted=0  
     default Vclothes = False
     default Cclothes = False
@@ -26,6 +27,7 @@
 label start:
     "{i}{cps=20}Che cos'è il crollo? Semplice, è la fine di tutto. La morte senza pace, la morte senza senso. Indossate le maschere, bambini, e ignorate la melodia delle bombe.{/cps}{/i}"
     "{cps=30}Your consciousness stirs as sound comes into focus. It’s coming from outside.{/cps}"
+    play music "audio/AMB_Street_1.ogg" volume 0.2 fadein 1.0
     "{cps=30}You roll around in bed as your nerves slowly come back online from slumber, and your sense of smell brings in the brackish water of the canals, the floral breeze of various patios, and the mirad fried pastries and tarts that are being sold out of stands and bakeries nearby.{/cps}"
     "{cps=30}Your memory returns to you as you process this unique potpourri, you are a tourist in the city of Venice during the {color=#308CDD}{b}Carnevale di Venezia{/b}{/color}.{/cps}"
     #change bg HOTEL
@@ -128,6 +130,8 @@ label nextScene:
     if Vclothes or Cclothes or Mclothes or Tclothes:
         "{cps=30}You walk outside in your outfit, ready to seize the day!{/cps}"
         "{cps=30}After locking your door behind you, walking down the stairs, and grabbing a quick coffee from the complimentary breakfast buffet, you finally step out of the hotel into the surrounding street.{/cps}"
+        stop music fadeout 2.0
+        play music "audio/Music_1.ogg" volume 0.5 fadein 2.0
         #change bg street
         scene bg street
         with fade

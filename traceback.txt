@@ -1,25 +1,21 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While processing text tag {=+size} in '{cps=30}{=+size}Heeeellllloooo there !{/size}{/cps}'.:
-  File "game/script.rpy", line 186, in script
-    p"{cps=30}{=+size}Heeeellllloooo there !{/size}{/cps}"
-Exception: Style '+size' does not exist.
+While running game code:
+Exception: Could not find font 'fonts/JMH Typewriter dry.otf'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 186, in script
-    p"{cps=30}{=+size}Heeeellllloooo there !{/size}{/cps}"
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\ast.py", line 921, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\exports.py", line 1373, in say
-    who(what, *args, **kwargs)
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\character.py", line 1266, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\character.py", line 927, in do_display
-    display_say(who,
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\character.py", line 666, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
+    python hide:
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\ast.py", line 1131, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\python.py", line 1061, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
+    python hide:
+  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
+    ui.interact()
   File "C:\Users\space\renpy-8.0.3-sdk\renpy\ui.py", line 299, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\core.py", line 3377, in interact
@@ -50,25 +46,37 @@ Full traceback:
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 266, in renpy.display.render.render
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\layout.py", line 1105, in render
+    surf = render(d, width - x, rh, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\behavior.py", line 885, in render
+    rv = super(Button, self).render(width, height, st, at)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\layout.py", line 1287, in render
+    xminimum = max(xminimum, size_groups[size_group].width(width, height, st, at))
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\layout.py", line 1224, in width
+    rend = renpy.display.render.render_for_size(i, width, height, st, at)
+  File "render.pyx", line 318, in renpy.display.render.render_for_size
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\behavior.py", line 885, in render
+    rv = super(Button, self).render(width, height, st, at)
   File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\layout.py", line 1334, in render
     surf = render(child,
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
   File "C:\Users\space\renpy-8.0.3-sdk\renpy\text\text.py", line 2109, in render
     virtual_layout = Layout(self, width, height, renders, drawable_res=False, size_only=True)
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\text\text.py", line 627, in __init__
-    self.paragraphs = self.segment(text.tokens, style, renders, text)
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\text\text.py", line 1174, in segment
-    style = getattr(renpy.store.style, value)
-  File "style.pyx", line 216, in renpy.style.StyleManager.__getattr__
-  File "style.pyx", line 83, in renpy.style.get_style
-Exception: Style '+size' does not exist.
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\text\text.py", line 656, in __init__
+    glyphs = ts.glyphs(s, self)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\text\text.py", line 255, in glyphs
+    fo = font.get_font(self.font, self.size, self.bold, self.italic, 0, self.antialias, self.vertical, self.hinting, layout.oversample)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\text\font.py", line 717, in get_font
+    face = load_face(fn)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\text\font.py", line 658, in load_face
+    raise Exception("Could not find font {0!r}.".format(orig_fn))
+Exception: Could not find font 'fonts/JMH Typewriter dry.otf'.
 
 Windows-10-10.0.22621 AMD64
 Ren'Py 8.0.3.22090809
 Carnival Unending 1.0
-Fri May  5 17:45:47 2023
+Fri May  5 21:22:50 2023

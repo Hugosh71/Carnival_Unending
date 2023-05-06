@@ -503,6 +503,8 @@ label C4:
 ####################### ACT 2
 label Act2:
     #change bg outsideChurch fade in
+    scene bg churchoutside
+    show path
     "{cps=30}You pull into a small dock outside the church and Path ties the gondolier to a long wooden pole.{/cps}"
     "{cps=30}He seems uncomfortable around here, afraid of something…{/cps}"
     "{cps=30}Or someone.{/cps}"
@@ -513,6 +515,7 @@ label Act2:
     pat"{cps=30}If you are going to the church anyway I mean, she usually stays around there with her dad.{/cps}"
     pat"{cps=30}If you could just deliver this letter to her without letting her dad know, I’d be so grateful!{/cps}"
     pat"{cps=30}I’ll stop holding you up now, enjoy the church!{/cps}"
+    hide path
     "{cps=30}This part of this city is much less crowded than the plaza, but there are still pedestrians walking from to and fro.{/cps}"
     "{cps=30}You see the entrance to the church, a small park next to it with many benches, and the path to the canals where you came from.{/cps}"
     "{cps=30}Where do you go?{/cps}"
@@ -523,6 +526,7 @@ label Imenu:
         "I go into the church":
             "{cps=30}You walk into the church…{/cps}"
             #change bg church , fade in
+            scene bg churchinside
             if not PrayMet:
                 jump I1first
             else:
@@ -542,6 +546,7 @@ label I1first:
     "{cps=30}He is wearing a red mask with no other affects of holiday celebration.{/cps}"
     "{cps=30}He walks up to you, with mild confusion.{/cps}"
     #Enter Pray center
+    show pray
     define pr=Character("Pray",color="#962121")
     pr"{cps=30}Hello, my child.{/cps}"
     pr"{cps=30}I am {color=#962121}Pray{/color}, are you lost?{/cps}"
@@ -571,7 +576,7 @@ label Jmenu:
 
 label J1:
     "{cps=30}You see a expression of pride start to form on his mouth.{/cps}"
-    pr"{cps=30}I am the current patriarch of venice, leader of the churchs here and one of the four patriarchs of the latin catholic chuch. {/cps}"
+    pr"{cps=30}I am the current patriarch of venice, leader of the churches here and one of the four patriarchs of the latin catholic chuch. {/cps}"
     pr"{cps=30}I am not in my full ceremonial robes right now, but I am tasked with a very high station.{/cps}"
     pr"{cps=30}Without forces like ours, venice would devolve morally.{/cps}"
     pr"{cps=30}That is why our jobs as representatives and administrators of the church matter so much…{/cps}"
@@ -594,6 +599,7 @@ label J2:
     pr"{cps=30}I find it to be the wrong way to look at lent, seeing it as a sacrifice that must be endured rather than a choice to limit oneself.{/cps}"
     pr"{cps=30}Then again, human nature cannot truly be argued with I suppose.{/cps}"
     pr"{cps=30}{i}È così.{/i}{/cps}"
+    jump Jmenu
 
 label J3:
     "{cps=30}You hand him the letter and he takes it curiously.{/cps}"
@@ -607,7 +613,7 @@ label J3:
     pr"{cps=30}A common misconception.{/cps}"
     pr"{cps=30}They write these to trick young women into dating them, at which point they mistreat, harm, and use her.{/cps}"
     pr"{cps=30}Young men are only concerned with feeding their own desires…{/cps}"
-    "{cps=30}There is venom in his voice, but not the venom of guilt for past actions{/cps}"
+    "{cps=30}There is venom in his voice, but not the venom of guilt for past actions...{/cps}"
     "{cps=30}It is a hatred stemming from being hurt in the past, his fear for his daughter’s safety feels like it stems from an old violation of his safety.{/cps}"
     pr"{cps=30}Thank you for bringing this to me.{/cps}"
     pr"{cps=30}Who wrote this?{/cps}"

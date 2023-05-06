@@ -32,6 +32,7 @@ label start:
     "{cps=30}Your memory returns to you as you process this unique potpourri, you are a tourist in the city of Venice during the {color=#308CDD}{b}Carnevale di Venezia{/b}{/color}.{/cps}"
     #change bg HOTEL
     scene bg hotel
+    with fade
     "{cps=30}You open your eyes, revealing your hotel room.{/cps}"
     "{cps=30}You have not been staying long, and that is evident in the relative cleanliness of this place. Your suitcases are still mostly unpacked.{/cps}"
     "{cps=30}You stretch and stand up out of your bed.{/cps}" 
@@ -131,6 +132,7 @@ label nextScene:
         "{cps=30}After locking your door behind you, walking down the stairs, and grabbing a quick coffee from the complimentary breakfast buffet, you finally step out of the hotel into the surrounding street.{/cps}"
         #change bg street
         scene bg street
+        with fade
         jump street
         
         
@@ -141,7 +143,10 @@ label nextScene:
         "{cps=30}Either way, as you walk out of your hotel room with a whistle, you hear screams and gasps of the simultaniously surprised and offended locals.{/cps}"
         "{cps=30}One thing leads to another, and you eventually find yourself in the back of a police car, being driven off to the nearest station.{/cps}"
         "{cps=30}Whoops.{/cps}"
-        jump prologuemenu
+        scene black
+        with fade
+        "{cps=30}Bad Ending: Nudist{/cps}"
+        return
 
 label street:
     "{cps=30}The street is crowded, choked with people wearing costumes, eating food, and making conversation.{/cps}"
@@ -154,6 +159,7 @@ label plaza:
     define p=Character("Puck",color="#308CDD")
     #change bg plaza
     scene bg plaza
+    with fade
     "{cps=30}You find yourself in a large plaza, with stands and attractions filling the usually empty space.{/cps}"
     "{cps=30}People seem to be less clumped together here, which allows you enough space to ambulate of your own voliton.{/cps}"
     "{cps=30}You see a small stage, an inviting looking shopkeeper's stand, and a sign pointing to the canals.{/cps}"
@@ -184,6 +190,7 @@ label plazamenu:
 label C1first:
     #change bg Puck
     scene bg pucksshow
+    with fade
     "{cps=30}You walk up to the small stage...{/cps}"
     "{cps=30}It seems empty, like the show hasn't started yet.{/cps}"
     "{cps=30}You prepare to leave before...{/cps}"
@@ -191,29 +198,28 @@ label C1first:
     "{cps=30}You hear a voice.{/cps}"
     #enter Puck
     show puck
-    p"{cps=30}Welcome, welcome, welcome ! I am {color=#308CDD}Puck{/color}, performer, reformer, and adorer of anyone that will tolerate me.{/cps}"
+    p"{cps=30}Welcome, welcome, welcome! I am {color=#308CDD}Puck{/color}, performer, reformer, and adorer of anyone that will tolerate me.{/cps}"
     "{cps=30}The strange man bows in a dramatic flourish.{/cps}"
     "{cps=30}He seems incredibly obnoxious, but there is a sparkle of insight in his eyes.{/cps}"
     "{cps=30}He is more aware and sharp than he would like you to know.{/cps}"
     $ PuckMet=True
-    p"{cps=30}How can I help you Signore and/or Signora ?{/cps}"
+    p"{cps=30}How can I help you Signore and/or Signora?{/cps}"
     jump Dmenu
 
 label C1:
-    p"{cps=30}How can I help you Signore and/or Signora ?{/cps}"
+    p"{cps=30}How can I help you Signore and/or Signora?{/cps}"
     jump Dmenu
 
 
 label Dmenu:
     menu:
-        "Can you tell me about yourself ?":
+        "Can you tell me about yourself?":
             jump D1
-
            
-        "Can you tell me about the locals ?":
+        "Can you tell me about the locals?":
             jump D2
 
-        "When is the show ?":
+        "When is the show?":
             jump D3
            
         "I return to the plaza.":
@@ -221,7 +227,7 @@ label Dmenu:
             
 
 label D1:
-    p "{cps=30}Well friend, I have much to tell !{/cps}" 
+    p "{cps=30}Well friend, I have much to tell!{/cps}" 
     "{cps=30}You can see Puck's demeanor change, like that of an unwinding spring.{/cps}" 
     "{cps=30}He has wanted to talk to someone about his past for a very long time.{/cps}" 
     p "{cps=30}I started my life as a lowly butcher’s son, dreaming of the world outside my rural town in the tuscan countryside.{/cps}" 
@@ -256,16 +262,18 @@ label D3:
     jump Dmenu
 
 label D4:
-    p"{cps=30}Goodbye, amico !{/cps}"
+    p"{cps=30}Goodbye, amico!{/cps}"
     p"{cps=30}Have fun, and make the most of Carnevale before Lent rears it’s ugly head.{/cps}"
     hide puck
     scene bg plaza
+    with fade
     jump plazamenu
     
     
 label C2first:
     #change bg pale shop
     scene bg caravan
+    with fade
     define pa=Character("Pale",color="#AB2BE4")
     $PaleMet=True  
     "{cps=30}You approach the caravan stall…{/cps}"
@@ -289,7 +297,6 @@ label Emenu:
     menu:
         "Can you tell me about yourself?":
             jump E1
-
 
         "Can you tell me about the locals?":
             jump E2
@@ -340,6 +347,7 @@ label F1:
     pa"{cps=30}Cool! Hold this sign and yell at people so they buy stuff from me.{/cps}"
     "{cps=30}The strange man reaches behind the counter, hands you a small sign that just reads: ‘Pale’s Store, We Sell Things. No Refunds’.{/cps}"
     "{cps=30}You then do just that, waving the sign around and yelling at people…{/cps}"
+    with fade
     #Fade background, black 3 se
     pa"{cps=30}Good job, I almost got a customer.{/cps}"
     pa"{cps=30}Here, have 165 money. You’ve kinda earned it.{/cps}"
@@ -359,6 +367,7 @@ label E4:
     pa"{cps=30}Enjoy the carnival, ciao.{/cps}"
     #fade bg = pale shop into plaza
     scene bg plaza
+    with fade
     jump plazamenu
 
 
@@ -366,6 +375,7 @@ label C3first:
     define pat=Character("Path",color="#DAC432")
     #change bg Canals
     scene bg canal
+    with fade
     "{cps=30}You walk into the canals.{/cps}"
     "{cps=30}As you walk around a corner, you hear a kind of melodic humming.{/cps}"
     "{cps=30}It is strangely melodic, and you feel a sense of longing sadness with an undercurrent of joy.{/cps}"
@@ -504,6 +514,7 @@ label C4:
 label Act2:
     #change bg outsideChurch fade in
     scene bg churchoutside
+    with fade
     show path
     "{cps=30}You pull into a small dock outside the church and Path ties the gondolier to a long wooden pole.{/cps}"
     "{cps=30}He seems uncomfortable around here, afraid of something…{/cps}"
@@ -527,6 +538,7 @@ label Imenu:
             "{cps=30}You walk into the church…{/cps}"
             #change bg church , fade in
             scene bg churchinside
+            with fade
             if not PrayMet:
                 jump I1first
             else:
@@ -657,7 +669,11 @@ label K3:
     "{cps=15}BROKEN, SLIP UP, OFF SCRIPT{/cps}"
     #glitch effect for 5 seconds
     #change character pray disappears without fade
+    hide pray
     #bg black fade
+    scene black
+    with fade
+    
     jump EndS
 
 label J4:
@@ -669,6 +685,7 @@ label I2first:
     "{cps=30}You can see some people sitting here, either waiting for something/someone or just resting their legs.{/cps}"
     "{cps=30}Your eyes eventually move towards a gorgeous woman with a pink parasol.{/cps}"
     #Enter Poem fade center
+    show poem
     "{cps=30}She seems… sad.{/cps}"
     "{cps=30}It is a sadness that feels deeply rooted in her heart, like an old tree that sustains itself on eating her joy.{/cps}"
     "{cps=30}It is the sadness of a realization, or a horrible thought.{/cps}"
@@ -717,8 +734,7 @@ label Mmenu:
     menu:
         "Can you tell me about yourself?":
             jump M1
-
-           
+   
         "Can you tell me about the locals?":
             jump M2
 
@@ -762,8 +778,10 @@ label M3:
     "{cps=30}The shock prevents you from fighting against the force exerted on your arm, as she drags you over to the nearby docks.{/cps}"
     po"{cps=30}You there!{/cps}"
     po"{cps=30}Sir, we would like to book a gondola ride!{/cps}"
+    show poem at right
     "{cps=30}She is pointing at Path, who alights with joy apon seeing her.{/cps}"
     # poem goes to right side screen path fades in left
+    show path at left
     pat"{cps=30}Oh… o-of course!{/cps}"
     pat"{cps=30}You read the letter?{/cps}"
     po"{cps=30}Yes, it was written beautifully!{/cps}"
@@ -790,13 +808,17 @@ label M4:
 label End1:
     #Path suitor ending
     #change bg outside church
+    scene bg churchoutside
+    with fade
     "{cps=30}Pray rushes outside in a power walk of vindictive and fatherly rage.{/cps}"
     "{cps=30}You follow, both out of curiosity and guilt for your breach of Path’s trust.{/cps}"
     "{cps=30}Once you both reach the canal docks, you see Path merrily cleaning any splashed water that got in his boat while whistling.{/cps}"
     #Path fade in right
+    show path at right
     "{cps=30}As he hears you and Pray’s footsteps, he turns around with a big grin on his face.{/cps}"
     pat"{cps=30}Hello friend! So thankful for giving h-{/cps}"
     #pray fade in left
+    show pray in left
     pr"{cps=30}Hello, boy.{/cps}"
     "{cps=30}Path gulps, mortified.{/cps}"
     pat"{cps=30}Um… greetings, patriarca!{/cps}"
@@ -813,6 +835,7 @@ label End1:
     "{cps=30}As the ink smears, he looks at you with pure confusion, betrayal and sadness.{/cps}"
     "{cps=30}He then jumps into his gondola, quickly unties it with deft still, and starts rowing as fast as he can through the canal.{/cps}"
     #path fade out
+    hide path
     "{cps=30}Pray yells out in rage, and jumps into a nearby gondola with the gondolier tuning his guitar idly.{/cps}"
     pr"{cps=30}Gondolier!{/cps}"
     "{cps=30}The gondolier turns to Pray.{/cps}"
@@ -820,15 +843,19 @@ label End1:
     "{cps=30}The gondolier shrugs, and starts to untie his boat’s knot.{/cps}"
     "{cps=30}Out of desire to see how this resolves, you jump into the gondola as a high speed gondola chase through Venice begins.{/cps}"
     #pray fade out
-    #fade to black for 4 seconds , then fade to canals
+    hide pray
+    #fade to canals
+    scene bg canal
     "{cps=30}After a thrilling and high-budget chase sequence with fancy effects and amazing soundtrack plays, you and Pray find yourselves back at the Plaza’s dock.{/cps}"
     "{cps=30}Pray tips the gondolier and steps off, you do the same.{/cps}"
     "{cps=30}Thats when you both see that Path’s boat has aready been docked.{/cps}"
     #pray fade left
+    show pray at left
     pr"{cps=30}Damn it!{/cps}"
     pr"{cps=30}He must be hiding in the plaza somewhere.{/cps}"
     "{cps=30}You assume the same, and you both run up to the plaza.{/cps}"
     #change bg plaza
+    scene bg plaza
     "{cps=30}You can see a large congregation around Puck’s stage, the show must be starting.{/cps}"
     pr"{cps=30}You don’t think…{/cps}"
     pr"{cps=30}He couldn’t be THAT stupid, right?{/cps}"
@@ -837,9 +864,11 @@ label End1:
     "{cps=30}He is, in fact, that stupid.{/cps}"
     "{cps=30}You walk over to the show stage, hanging your heads in awe of this intellectual failure on the part of Path.{/cps}"
     # change bg Stage
+    scene bg pucksshow
     "{cps=30}You see that the puppet show has started, and there are two marionettes in the stand: A high-voiced female puppet and a gravelly male puppet.{/cps}"
     "{cps=30}Pray wordlessly walks up to the stand, reaches up, and pulls Path down by his nose.{/cps}"
     #path fade in right
+    show path at right
     pat"{cps=30}Ow!{/cps}"
     "{cps=30}Some of the audience laughs, some children cry, and most people are concerned and ticked off.{/cps}"
     pr"{cps=30}Boy. {/cps}"
@@ -848,9 +877,11 @@ label End1:
     pr"{cps=30}Who convinced you to go and hide as a member of a puppet show rather than just run?{/cps}"
     "{cps=30}You turn back to the puppet stand, where puck is sneaking out.{/cps}"
     #puck fade in center
+    show puck at center
     p"{cps=30}Hahaha… um…{/cps}"
-    p"{cps=30}{size=+20}DISTRACTION !{/size}{/cps}"
+    p"{cps=30}{size=+20}DISTRACTION!{/size}{/cps}"
     "{cps=30}Puck throws down a smoke bomb and starts running away.{/cps}"
+    hide puck
     "{cps=30}Pray is about to chase him aswell, but starts coughing from the smoke.{/cps}"
     pr"{cps=30}{i}Cough{/i} you know what ? {i}Cough{/i}{/cps}"
     pr"{cps=30}You {i}Cough{/i} win.{/cps}"
@@ -891,12 +922,15 @@ label End1:
     pr"{cps=30}I think that, perhaps if I start treating her like the adult she is…{/cps}"
     pr"{cps=30}Perhaps some of that fear will go away.{/cps}"
     pr"{cps=30}I need it to.{/cps}"
+    scene black
+    with fade
     "{cps=30}And so it was, Pray and Path may not have got along and certainly would not for years to come, but the two had reached a kind of understanding.{/cps}"
     "{cps=30}Path saw that the patriarch was not as imposing as he seemed, and that Pray was just as, if not more, afraid than he was.{/cps}"
     "{cps=30}And Pray saw that, despite how scary it sounds, It is not just the role of a parent to protect…{/cps}"
     "{cps=30}It is also the role of a parent to cultivate, and eventually, release their child into the open winds of life.{/cps}"
-    "{cps=20}And thus concludes their story, a story of love, growth and fear.{/cps}"
-    "{cps=30}{/cps}"
+    "{cps=20}Thus ends our tale, a of love, growth and fear.{/cps}"
+    "{cps=30}Ending One: Afraid{/cps}"
+    return
 
 
 label End2:
@@ -996,7 +1030,8 @@ label End2:
     "{cps=30}Path never got with Poem, she would move out of Venice for a job in Paris.{/cps}"
     "{cps=30}It would be a major shift for Pray, who lost his station and would die two years later of a heart attack.{/cps}"
     "{cps=20}Thus ends our tale, a tale of love, awkward boat rides, and clever thinking.{/cps}"
-    
+    "{cps=20}Ending Two: Happy{/cps}"
+    return
     
 label End3:
     #miscommunication ending
@@ -1094,7 +1129,9 @@ label End3:
     "{cps=30}She simply just disappeared from the face of the world, alive only in the memories of the few people that knew her.{/cps}"
     "{cps=30}Path got very close to knowing her, but it is a goal he could never reach.{/cps}"
     "{cps=20}That idea haunts him, and would continue to do so for many a year beyond.{/cps}"
-    "{cps=30}{/cps}"
+    "{cps=30}Thus ends our tale, a tale of love, sadness, and lost possabilities.{/cps}"
+    "{cps=30}Ending Three: Sad{/cps}"
+    return
 
 label EndS:
     #Secret Ending

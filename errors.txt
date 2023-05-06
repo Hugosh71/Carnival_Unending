@@ -2,13 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 620: expected statement.
-    "Path wrote it":
-                   ^
+File "game/script.rpy", line 780: expected statement.
+    xalign 0.75
+            ^
 
-File "game/script.rpy", line 622: expected statement.
-    "Puck wrote it":
-                   ^
+File "game/script.rpy", line 781: expected statement.
+    yalign 1.0
+            ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Fri May  5 22:49:19 2023
+Fri May  5 22:35:11 2023

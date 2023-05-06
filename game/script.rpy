@@ -198,7 +198,7 @@ label C1first:
     "{cps=30}You hear a voice.{/cps}"
     #enter Puck
     show puck
-    p"{cps=30}Welcome, welcome, welcome! I am {color=#308CDD}Puck{/color}, performer, reformer, and adorer of anyone that will tolerate me.{/cps}"
+    p"{cps=30}Welcome, welcome, welcome! I am {color=#308CDD}Puck{/color}, performer, and adorer of anyone that will tolerate me.{/cps}"
     "{cps=30}The strange man bows in a dramatic flourish.{/cps}"
     "{cps=30}He seems incredibly obnoxious, but there is a sparkle of insight in his eyes.{/cps}"
     "{cps=30}He is more aware and sharp than he would like you to know.{/cps}"
@@ -235,7 +235,7 @@ label D1:
     p "{cps=30}Thats why I hatched a plan… I tricked my father into leaving his keys on the table then used a distraction to draw him outside and buy me enough time to take his car and drive off on the open road!{/cps}" 
     p "{cps=30}Freedom was mine at last!{/cps}" 
     p "{cps=30}I found others on the road who shared my view on art and life, and we formed a quaint theater company together: ‘La compagnia dello specchio e della mente!’{/cps}" 
-    p "{cps=30}‘The company of mirror and mind’.{/cps}" 
+    p "{cps=30}‘The company of mirror and mind’!{/cps}" 
     "{cps=30}You see fire in his eyes, but behind that… something else…{/cps}" 
     "{cps=30}Sadness. His memories of his company are stained by some kind of old wound, some old mistake.{/cps}" 
     p"{cps=30}Yes, well. Nowadays, I find myself as more of a solo act than I used to be…{/cps}" 
@@ -400,7 +400,6 @@ label Gmenu:
     menu:
         "Can you tell me about yourself?":
             jump G1
-
            
         "Can you tell me about the locals?":
             jump G2
@@ -410,7 +409,6 @@ label Gmenu:
            
         "I return to the plaza.":
             jump G4
-
 
 label G1:
     "{cps=30}The man shifts around uncomfortably.{/cps}"
@@ -422,14 +420,14 @@ label G1:
     pat"{cps=30}My mother and father on the gondola with me, slowly moving through the canals… {/cps}"
     "{cps=30}Path looks out at the water for a moment, both floral and sewage-scented, before meeting your gaze once more.{/cps}"
     pat"{cps=30}It’s a magical memory.{/cps}"
-    pat"{cps=30}I’m so lucky… to be here.{/cps}"
+    pat"{cps=30}I’m so lucky… to be here...{/cps}"
     pat"{cps=30}To be alive.{/cps}"
     jump Gmenu
 
 label G2:
     pat"{cps=30}The locals?{/cps}"
     pat"{cps=30}Theres a lot of wonderful people around here!{/cps}"
-    pat"{cps=30}Especially po-{/cps}"
+    pat"{cps=30}Especially Po-{/cps}"
     "{cps=30}He ‘catches’ himself and starts blushing.{/cps}"
     pat"{cps=30}E-especially Poem.{/cps}"
     pat"{cps=30}She is the daughter of the Patriarch of Venice, and the fairest lady in the city.{/cps}"
@@ -673,7 +671,6 @@ label K3:
     #bg black fade
     scene black
     with fade
-    
     jump EndS
 
 label J4:
@@ -846,6 +843,7 @@ label End1:
     hide pray
     #fade to canals
     scene bg canal
+    with fade
     "{cps=30}After a thrilling and high-budget chase sequence with fancy effects and amazing soundtrack plays, you and Pray find yourselves back at the Plaza’s dock.{/cps}"
     "{cps=30}Pray tips the gondolier and steps off, you do the same.{/cps}"
     "{cps=30}Thats when you both see that Path’s boat has aready been docked.{/cps}"
@@ -856,6 +854,7 @@ label End1:
     "{cps=30}You assume the same, and you both run up to the plaza.{/cps}"
     #change bg plaza
     scene bg plaza
+    with fade
     "{cps=30}You can see a large congregation around Puck’s stage, the show must be starting.{/cps}"
     pr"{cps=30}You don’t think…{/cps}"
     pr"{cps=30}He couldn’t be THAT stupid, right?{/cps}"
@@ -865,6 +864,7 @@ label End1:
     "{cps=30}You walk over to the show stage, hanging your heads in awe of this intellectual failure on the part of Path.{/cps}"
     # change bg Stage
     scene bg pucksshow
+    with fade
     "{cps=30}You see that the puppet show has started, and there are two marionettes in the stand: A high-voiced female puppet and a gravelly male puppet.{/cps}"
     "{cps=30}Pray wordlessly walks up to the stand, reaches up, and pulls Path down by his nose.{/cps}"
     #path fade in right
@@ -936,12 +936,16 @@ label End1:
 label End2:
     #Puck suitor ending
     #change outside church
+    scene bg churchoutside
+    with fade
     "{cps=30}Pray rushes outside in a power walk of vindictive and fatherly rage.{/cps}"
     "{cps=30}You follow, both out of curiosity and guilt for throwing Puck under the bus.{/cps}"
     #pray fade in left
+    show pray at left
     "{cps=30}Pray walks up to the nearby canal port, and you walk up behind him.{/cps}"
     "{cps=30}Path is cleaning up the inside of his boat, and stops when he sees Pray.{/cps}"
     #path fade in right
+    show path at right
     "{cps=30}Path looks over to you, and you mouth the words ‘Act Natural’ to him.{/cps}"
     "{cps=30}Path nods and turns to look at Pray.{/cps}"
     pat"{cps=30}H-Hello sir!{/cps}"
@@ -950,6 +954,8 @@ label End2:
     pat"{cps=30}Right away, your holiness!{/cps}"
     "{cps=30}Path starts rowing, uncertainly, through the canals.{/cps}"
     # change bg canals
+    scene bg canal
+    with fade
     "{cps=30}The three of you arrive at the canals outside the plaza, where you and Path get off slowly.{/cps}"
     "{cps=30}Path is about to follow you and Pray, but you motion for him to stay.{/cps}"
     "{cps=30}Path nods.{/cps}"
@@ -958,17 +964,22 @@ label End2:
     "{cps=30}Pray tosses some money into Path’s hands, and Path accepts it with a confused and forced smile.{/cps}"
     "{cps=30}You and Pray leave the port and enter the Plaza.{/cps}"
     #change bg plaza
+    scene bg plaza
+    with fade
     "{cps=30}You and Pray walk out into the plaza. You can see Puck’s show has amassed a large crowd.{/cps}"
     pr"{cps=30}He must be over there.{/cps}"
     pr"{cps=30}I’m going to talk to him, you have already done enough.{/cps}"
     pr"{cps=30}Stay out of this, please.{/cps}"
     "{cps=30}Pray walks up to the show crowd.{/cps}"
     "{cps=30}You continue following him (obviously) but do so at more of a distance.{/cps}"
-    #change bg  stage
+    #change bg stage
+    scene bg pucksshow
+    with fade
     "{cps=30}Puck is currently going through a scene where a clever peasant tricks a complacent aristocrat into giving him the aristocrat’s wallet.{/cps}"
     "{cps=30}The crowd laughs, boos, and claps as the scene unfolds, yet Pray remains stagnant, waiting for an intermission so he can talk to Puck backstage.{/cps}"
     "{cps=30}Eventually, that intermission comes, and you follow them again {/cps}"
     #Puck fade in right
+    show puck at right
     p"{cps=30}Thank you, thank you!{/cps}"
     p"{cps=30}I shall return to the tale of ‘Brainy and Dull’ after a short five minute intermission.{/cps}"
     p"{cps=30}Please take time to grab snacks, tip money, or just sit and relax until this bell sounds and the show resumes.{/cps}"
@@ -1004,8 +1015,10 @@ label End2:
     pr"{cps=30}Okay… good!{/cps}"
     "{cps=30}Pray storms off, unsatisfied with the result but willing to believe what Puck said.{/cps}"
     #pray fade out   
+    hide pray
     "{cps=30}Once he leaves, you and Path walk up to Puck.{/cps}"
     #path fade in left
+    show path at left
     p"{cps=30}Hello there Path!{/cps}"
     p"{cps=30}How are you two doing this morning, have you had breakfast yet?{/cps}"
     pat"{cps=30}Sir… what you did for me…{/cps}"
@@ -1019,11 +1032,15 @@ label End2:
     p"{cps=30}We can talk more later, the show is starting.{/cps}"
     "{cps=30}Puck walks back into his booth and the puppet show resumes.{/cps}"
     #Puck fade out
+    hide puck
     #path fade in center
+    show path at center
     "{cps=30}Path exhales a sigh of relief, and looks you with relief.{/cps}"
     pat"{cps=30}Thank you, for whatever you did.{/cps}"
     pat"{cps=30}That was almost really bad, and both you and Puck managed to turn it around.{/cps}"
     pat"{cps=30}I’m so lucky, to know clever people.{/cps}"
+    scene black
+    with fade
     "{cps=30}And so it was, you three all got food later and discussed the mornings events.{/cps}"
     "{cps=30}Puck never asked for anything in return from Path for what he did, and resolved to never mention it again.{/cps}"
     "{cps=30}Puck also gave Path a lengthy discussion about smarter practices, confidence, respect, and the benefits of online dating.{/cps}"
@@ -1036,6 +1053,7 @@ label End2:
 label End3:
     #miscommunication ending
     #chang bg canals
+    scene bg canal
     "{cps=30}You, Poem and Path are slowly moving down the canal. Poem’s eyes are affixed on you, and Path’s eyes are affixed onto her.{/cps}"
     po"{cps=30}So, how are you liking it?{/cps}"
     "{cps=30}You ask her what she means.{/cps}"
@@ -1054,7 +1072,11 @@ label End3:
     pat"{cps=30}W-Wait!{/cps}"
     "{cps=30}Poem rounds the corner and Path goes out of sight.{/cps}"
     #path fade out
+    hide path
     #change bg plaza    
+    scene bg plaza
+    with fade
+    show poem at right
     "{cps=30}Poem moves with an unnatural exuberance.{/cps}"
     "{cps=30}Almost like this is all an excuse to distract herself from something.{/cps}"
     po"{cps=30}Oh! There’s a puppet show over there!{/cps}"
@@ -1062,12 +1084,14 @@ label End3:
     "{cps=30}You and her walk up, and you try to find a good moment to tell her you did not write the letter.{/cps}"
     "{cps=30}But the crowd is so loud, and she seems so full of joy.{/cps}"
     #change bg stage
+    scene bg pucksshow
     "{cps=30}She sits down, watching the show with rapt attention.{/cps}"
     "{cps=30}Puck’s show is currently playing a scene where two lovers keep passing each other without meeting.{/cps}"
     "{cps=30}As you two sit down to watch, you hear something in the distance.{/cps}"
     pat"{cps=30}Wait!{/cps}"
     "{cps=30}It seems like Path is just full on sprinting through the plaza towards you and Poem.{/cps}"
-    #path fade in right
+    #path fade in left
+    show path at left
     pat"{cps=30}You f-forgot your parasol!{/cps}"
     pat"{cps=30}And, ya know.{/cps}"
     pat"{cps=30}Me.{/cps}"
@@ -1123,8 +1147,9 @@ label End3:
     "{cps=30}In later years, when recounting this story, he said that the moment the quandry was posed to him... he knew.{/cps}"
     "{cps=30}He knew what was right, and would choose it again.{/cps}"
     #change bg black
+    scene black
+    with fade
     "{cps=30}Two months later, Poem would take an airplane out of the city.{/cps}"
-    #poem fade out
     "{cps=30}None knew where she was going, not even her father.{/cps}"
     "{cps=30}She simply just disappeared from the face of the world, alive only in the memories of the few people that knew her.{/cps}"
     "{cps=30}Path got very close to knowing her, but it is a goal he could never reach.{/cps}"
@@ -1136,12 +1161,15 @@ label End3:
 label EndS:
     #Secret Ending
     #change bg end of the world
-    "{cps=30}{b}You are not supposed to be here.{/b}{/cps}"
-    "{cps=30}{b}Please, restart the game.{/b}{/cps}"
-    "{cps=30}{b}You are not supposed to be here.{/b}{/cps}"
-    "{cps=30}{b}Please, restart the game.{/b}{/cps}"
-    "{cps=30}{b}You are not supposed to be here.{/b}{/cps}"
-    "{cps=30}{b}Please, restart the game.{/b}{/cps}"
+    scene bg edge
+    label EdgeLoop:
+        "{cps=30}{b}You are not supposed to be here.{/b}{/cps}"
+        "{cps=30}{b}Please, restart the game.{/b}{/cps}"
+        "{cps=30}{b}You are not supposed to be here.{/b}{/cps}"
+        "{cps=30}{b}Please, restart the game.{/b}{/cps}"
+        "{cps=30}{b}You are not supposed to be here.{/b}{/cps}"
+        "{cps=30}{b}Please, restart the game.{/b}{/cps}"
+        jump EdgeLoop
     
     
    

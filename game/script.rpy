@@ -31,6 +31,7 @@ label start:
     "{cps=30}You roll around in bed as your nerves slowly come back online from slumber, and your sense of smell brings in the brackish water of the canals, the floral breeze of various patios, and the mirad fried pastries and tarts that are being sold out of stands and bakeries nearby.{/cps}"
     "{cps=30}Your memory returns to you as you process this unique potpourri, you are a tourist in the city of Venice during the {color=#308CDD}{b}Carnevale di Venezia{/b}{/color}.{/cps}"
     #change bg HOTEL
+    scene bg hotel
     "{cps=30}You open your eyes, revealing your hotel room.{/cps}"
     "{cps=30}You have not been staying long, and that is evident in the relative cleanliness of this place. Your suitcases are still mostly unpacked.{/cps}"
     "{cps=30}You stretch and stand up out of your bed.{/cps}" 
@@ -129,6 +130,7 @@ label nextScene:
         "{cps=30}You walk outside in your outfit, ready to seize the day!{/cps}"
         "{cps=30}After locking your door behind you, walking down the stairs, and grabbing a quick coffee from the complimentary breakfast buffet, you finally step out of the hotel into the surrounding street.{/cps}"
         #change bg street
+        scene bg street
         jump street
         
         
@@ -151,6 +153,7 @@ label street:
 label plaza:
     define p=Character("Puck",color="#308CDD")
     #change bg plaza
+    scene bg plaza
     "{cps=30}You find yourself in a large plaza, with stands and attractions filling the usually empty space.{/cps}"
     "{cps=30}People seem to be less clumped together here, which allows you enough space to ambulate of your own voliton.{/cps}"
     "{cps=30}You see a small stage, an inviting looking shopkeeper's stand, and a sign pointing to the canals.{/cps}"
@@ -180,12 +183,14 @@ label plazamenu:
 
 label C1first:
     #change bg Puck
+    scene bg pucksshow
     "{cps=30}You walk up to the small stage...{/cps}"
     "{cps=30}It seems empty, like the show hasn't started yet.{/cps}"
     "{cps=30}You prepare to leave before...{/cps}"
-    p"{cps=30}{size=+10}Heeeellllloooo there !{/size}{/cps}"
+    p"{cps=30}{size=+10}Heeeellllloooo there!{/size}{/cps}"
     "{cps=30}You hear a voice.{/cps}"
     #enter Puck
+    show puck
     p"{cps=30}Welcome, welcome, welcome ! I am {color=#308CDD}Puck{/color}, performer, reformer, and adorer of anyone that will tolerate me.{/cps}"
     "{cps=30}The strange man bows in a dramatic flourish.{/cps}"
     "{cps=30}He seems incredibly obnoxious, but there is a sparkle of insight in his eyes.{/cps}"
@@ -253,12 +258,14 @@ label D3:
 label D4:
     p"{cps=30}Goodbye, amico !{/cps}"
     p"{cps=30}Have fun, and make the most of Carnevale before Lent rears it’s ugly head.{/cps}"
-    
+    hide puck
+    scene bg plaza
     jump plazamenu
     
     
 label C2first:
     #change bg pale shop
+    scene bg caravan
     define pa=Character("Pale",color="#AB2BE4")
     $PaleMet=True  
     "{cps=30}You approach the caravan stall…{/cps}"
@@ -266,10 +273,11 @@ label C2first:
     "{cps=30}There is a small bell on the counter, which is silhouetted by a visually impenetrable red curtain.{/cps}"
     "{cps=30}You tentatively approach the bell and ring it.{/cps}"
     "{cps=30}As the sound echos out, you hear a rustling behind the curtain…{/cps}"
-    "{cps=30}A strange man in a porcelain mask and purple robes steps out from the red curtain.{/cps}"
+    "{cps=30}A strange man in a porcelain mask and purple robes leans outward from the red curtain.{/cps}"
     "{cps=30}He speaks in a calm and tired yet rushed and irritated tone.{/cps}"
     #Enter Pale
-    pa"{cps=30}Yo, what do ya want ?{/cps}"
+    show pale
+    pa"{cps=30}Yo, what do ya want?{/cps}"
 
     jump Emenu
 
@@ -350,19 +358,21 @@ label F2:
 label E4:
     pa"{cps=30}Enjoy the carnival, ciao.{/cps}"
     #fade bg = pale shop into plaza
+    scene bg plaza
     jump plazamenu
 
 
 label C3first:
     define pat=Character("Path",color="#DAC432")
     #change bg Canals
+    scene bg canal
     "{cps=30}You walk into the canals.{/cps}"
     "{cps=30}As you walk around a corner, you hear a kind of melodic humming.{/cps}"
     "{cps=30}It is strangely melodic, and you feel a sense of longing sadness with an undercurrent of joy.{/cps}"
     "{cps=30}You round the corner, and…{/cps}"
 
     #Enter Path
-
+    show path
     pat"{cps=30}{size=+10}Oh!{/size}{/cps}"
     "{cps=30}You see a nervous gondalier, whose daydreams have been interrupted by your presence.{/cps}"
     "{cps=30}He seems kind, with a deep shyness in his demeanor.{/cps}"
@@ -398,7 +408,7 @@ label G1:
     pat"{cps=30}Haha…{/cps}"
     pat"{cps=30}Um, I got this job from my father.{/cps}"
     pat"{cps=30}He and my mother are… {size=-5}gone{/size}.{/cps}"
-    pat"{cps=30}But you know, doing this reminds me of times I spent as a kid !{/cps}"
+    pat"{cps=30}But you know, doing this reminds me of times I spent as a kid!{/cps}"
     pat"{cps=30}My mother and father on the gondola with me, slowly moving through the canals… {/cps}"
     "{cps=30}Path looks out at the water for a moment, both floral and sewage-scented, before meeting your gaze once more.{/cps}"
     pat"{cps=30}It’s a magical memory.{/cps}"

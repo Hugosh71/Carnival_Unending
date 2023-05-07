@@ -490,6 +490,7 @@ label H2:
 
 label G4:
     pat"{cps=30}Okay, talk to you later!{/cps}"
+    stop sound fadeout 2.0
     jump plazamenu
 
 label C4:
@@ -566,7 +567,7 @@ label Imenu:
             with fade
             stop music fadeout 2.0
             stop sound fadeout 2.0
-            play sound "audio/FugueChurchOrgan.mp3" volume 0.5 fadein 2.0
+            play sound "audio/FugueChurchOrgan.ogg" volume 0.5 fadein 2.0
             if not PrayMet:
                 jump I1first
             else:

@@ -77,7 +77,7 @@ label A2:
 label A3:
     $ choice_A3_made=True
     "{cps=30}You take time to unpack your bags...{/cps}"
-    "{cps=30}You find 15 money in one of your bags !{/cps}"
+    "{cps=30}You find 15 money in one of your bags!{/cps}"
     $ money+=15
     jump prologuemenu
 
@@ -172,7 +172,6 @@ label plaza:
 
 label plazamenu:
     scene bg plaza
-    with fade
     menu:
        
         "I go to the small stage.":
@@ -400,7 +399,7 @@ label C3first:
     with fade
     "{cps=30}You walk into the canals.{/cps}"
     "{cps=30}As you walk around a corner, you hear a kind of melodic humming.{/cps}"
-    "{cps=30}It is strangely melodic, and you feel a sense of longing sadness with an undercurrent of joy.{/cps}"
+    "{cps=30}It is strangely sincere, and you feel a sense of longing sadness with an undercurrent of joy.{/cps}"
     "{cps=30}You round the corner, and…{/cps}"
 
     #Enter Path
@@ -581,7 +580,7 @@ label Imenu:
 
 label I1first:
     "{cps=30}An ornate, astounding church meets you. {/cps}"
-    "{cps=30}You assume that most that usually worship here are out on the town, celebrating.{/cps}"
+    "{cps=30}You assume most people that usually worship here are out on the town, celebrating.{/cps}"
     "{cps=30}But that doesn’t mean the church is empty, you see a group of people wearing crosses talking in a corner.{/cps}"
     "{cps=30}At your look at them, one of the men whip their head around towards you.{/cps}"
     "{cps=30}He is wearing a red mask with no other affects of holiday celebration.{/cps}"
@@ -649,7 +648,7 @@ label J3:
     "{cps=30}When he gets to the end, and sees that is addressed to his daughter, he scowls.{/cps}"
     pr"{cps=30}{size=+5}Who!{/size}{/cps}"
     pr"{cps=30}Who wrote this… sappy, deceptive piece of paper!{/cps}"
-    "{cps=30}You ask him in what way is it deceptive.{/cps}"
+    "{cps=30}You ask him in what way it is deceptive.{/cps}"
     pr"{cps=30}All love letters are deceptive, no matter how beautifully worded.{/cps}"
     pr"{cps=30}You think young men write these out of true love?{/cps}"
     pr"{cps=30}A common misconception.{/cps}"
@@ -687,8 +686,8 @@ label K1:
     jump End1
 
 label K2:
-    pr"{cps=30}The performer ?{/cps}"
-    pr"{cps=30}Thats… unexpected{/cps}"
+    pr"{cps=30}The performer?{/cps}"
+    pr"{cps=30}Thats… unexpected.{/cps}"
     pr"{cps=30}I suppose stranger things have happened.{/cps}"
     "{cps=30}Pray storms out, the two people he was talking to look at each other in concern.{/cps}"
     "{cps=30}You realize that they look like two preists who were talking to him about lent plans, and now that he has stormed out they both roll their eyes and look at eachother.{/cps}"
@@ -700,6 +699,7 @@ label K3:
     #glitch effect for 5 seconds
     #change character pray disappears without fade
     hide pray
+    stop music
     #bg black fade
     scene black
     with fade
@@ -707,6 +707,10 @@ label K3:
 
 label J4:
     pr"{cps=30}Understood, know that you are always welcome here, child.{/cps}"
+    scene bg churchoutside
+    stop music fadeout 2.0
+    play sound "audio/AMB_Church_Inside_Crowded.ogg" volume 0.5 fadein 2.0
+    play music "audio/Music_1.ogg" volume 0.3 fadein 2.0
     jump Imenu
 
 label I2first:
@@ -722,7 +726,7 @@ label I2first:
     "{cps=30}She mouths something under her breath, and then quickly smiles that ‘nice’ sort of smile you offer a stranger or acquaintance.{/cps}"
     $ PoemMet=True
     po"{cps=30}Hello there.{/cps}"
-    po"{cps=30}How are you faring today ?{/cps}"
+    po"{cps=30}How are you faring today?{/cps}"
     jump Lmenu
 
 label I2:
@@ -775,7 +779,7 @@ label Mmenu:
             jump M4
 
 label M1:
-    po"{cps=30}My name is {color="#F4D0E5"}Poem{/color}, I'm Pray’s daughter.{/cps}"
+    po"{cps=30}My name is {color=#F4D0E5}Poem{/color}, I'm Pray’s daughter.{/cps}"
     po"{cps=30}I am a professor of art, mostly painting with an impressionistic pointalism style.{/cps}"
     po"{cps=30}I am struggling a bit in the inspiration front right now, as no subject or ideas are availing themselves to me.{/cps}"
     po"{cps=30}In time, I suppose.{/cps}"
@@ -830,6 +834,7 @@ label M3:
 
 label M4:
     pat"{cps=30}Okay, addio!{/cps}"
+    hide poem
     jump Imenu
 
 
@@ -857,7 +862,7 @@ label End1:
     "{cps=30}Path gulps, mortified.{/cps}"
     pat"{cps=30}Um… greetings, patriarca!{/cps}"
     pat"{cps=30}How may I serve you?{/cps}"
-    pr"{cps=30}There is only one way you can help me, boy{/cps}"
+    pr"{cps=30}There is only one way you can help me, boy.{/cps}"
     pat"{cps=30}And that is?{/cps}"
     pr"{cps=30}You can leave Venice, forevermore, and then you ‘might’ find salvation from the pit in Peter's list.{/cps}"
     pr"{cps=30}Otherwise, I cannot guarantee your immortal soul’s safety.{/cps}"
@@ -867,7 +872,7 @@ label End1:
     "{cps=30}Pray pulls out the letter and drops it into the canal.{/cps}"
     "{cps=30}Path’s eyes are locked on the letter until it lands in the brackish sewage of the canal.{/cps}"
     "{cps=30}As the ink smears, he looks at you with pure confusion, betrayal and sadness.{/cps}"
-    "{cps=30}He then jumps into his gondola, quickly unties it with deft still, and starts rowing as fast as he can through the canal.{/cps}"
+    "{cps=30}He then jumps into his gondola, quickly unties it with deft skill, and starts rowing as fast as he can through the canal.{/cps}"
     #path fade out
     hide path
     "{cps=30}Pray yells out in rage, and jumps into a nearby gondola with the gondolier tuning his guitar idly.{/cps}"
@@ -905,8 +910,8 @@ label End1:
     "{cps=30}He is, in fact, that stupid.{/cps}"
     "{cps=30}You walk over to the show stage, hanging your heads in awe of this intellectual failure on the part of Path.{/cps}"
     # change bg Stage
-    show pray at left
     scene bg pucksshow
+    show pray at left
     with fade
     stop sound fadeout 2.0
     play sound "audio/AMB_Street_2.ogg" fadein 2.0 volume 0.5
@@ -957,8 +962,8 @@ label End1:
     pr"{cps=30}I guess that is funny.{/cps}"
     pr"{cps=30}Can I tell you something funnier?{/cps}"
     pr"{cps=30}My fear consumes me.{/cps}"
-    pr"{cps=30}Every waking moment of my life is stained by fear{/cps}"
-    pr"{cps=30}Fear in dark corners, fear of death, fear of loss.{/cps}"
+    pr"{cps=30}Every waking moment of my life is stained by fear.{/cps}"
+    pr"{cps=30}Fear of dark streets, fear of death, fear of loss.{/cps}"
     pr"{cps=30}I think that’s something I need to work on.{/cps}"
     pr"{cps=5}…{/cps}"
     pr"{cps=30}I need to stop using this to distract myself.{/cps}"
@@ -974,7 +979,7 @@ label End1:
     "{cps=30}And Pray saw that, despite how scary it sounds, It is not just the role of a parent to protect…{/cps}"
     "{cps=30}It is also the role of a parent to cultivate, and eventually, release their child into the open winds of life.{/cps}"
     "{cps=20}Thus ends our tale, a of love, growth and fear.{/cps}"
-    "{cps=30}Ending One: Afraid{/cps}"
+    "{cps=30}Ending One: Afraid.{/cps}"
     $ persistent.restarts+=1
     return
 
@@ -999,15 +1004,15 @@ label End2:
     "{cps=30}Path looks over to you, and you mouth the words ‘Act Natural’ to him.{/cps}"
     "{cps=30}Path nods and turns to look at Pray.{/cps}"
     pat"{cps=30}H-Hello sir!{/cps}"
-    pat"{cps=30}How may I hhelp you this fine morning?{/cps}"
+    pat"{cps=30}How may I h-help you this fine morning?{/cps}"
     pr"{cps=30}We don’t have much time, take us to the Plaza!{/cps}"
     pat"{cps=30}Right away, your holiness!{/cps}"
     "{cps=30}Path starts rowing, uncertainly, through the canals.{/cps}"
     # change bg canals
     scene bg canal
-    with fade
     show pray at left
     show path at right
+    with fade
     stop sound fadeout 2.0
     play sound "audio/AMB_Canal.ogg" fadein 2.0 volume 0.5
     "{cps=30}The three of you arrive at the canals outside the plaza, where you and Path get off slowly.{/cps}"
@@ -1019,8 +1024,8 @@ label End2:
     "{cps=30}You and Pray leave the port and enter the Plaza.{/cps}"
     #change bg plaza
     scene bg plaza
-    with fade
     show pray at left
+    with fade
     stop sound fadeout 2.0
     play sound "audio/AMB_Street_1.ogg" fadein 2.0 volume 0.3
     "{cps=30}You and Pray walk out into the plaza. You can see Puck’s show has amassed a large crowd.{/cps}"
@@ -1031,13 +1036,13 @@ label End2:
     "{cps=30}You continue following him (obviously) but do so at more of a distance.{/cps}"
     #change bg stage
     scene bg pucksshow
-    with fade
     show pray at left
+    with fade
     stop sound fadeout 2.0
     play sound "audio/AMB_Street_2.ogg" fadein 2.0 volume 0.5
     "{cps=30}Puck is currently going through a scene where a clever peasant tricks a complacent aristocrat into giving him the aristocrat’s wallet.{/cps}"
     "{cps=30}The crowd laughs, boos, and claps as the scene unfolds, yet Pray remains stagnant, waiting for an intermission so he can talk to Puck backstage.{/cps}"
-    "{cps=30}Eventually, that intermission comes, and you follow them again {/cps}"
+    "{cps=30}Eventually, that intermission comes. {/cps}"
     #Puck fade in right
     show puck at right
     p"{cps=30}Thank you, thank you!{/cps}"
@@ -1061,10 +1066,10 @@ label End2:
     pr"{cps=30}It is a love letter, addressed to my daughter.{/cps}"
     pr"{cps=30}Someone gave it to me earlier, and claimed that you were the one who wrote it.{/cps}"
     p"{cps=30}I don’t-{/cps}"
-    "{cps=30}Puck looks out and you, and then further back into the corner where the canals are{/cps}"
+    "{cps=30}Puck looks out at you, and then further back into the corner where the canals are.{/cps}"
     "{cps=30}You turn, and see Path peeking around that corner, anticipation and nervousness on his face.{/cps}"
     "{cps=30}Puck sees this, and smiles.{/cps}"
-    p"{cps=30}Yes, signore{/cps}"
+    p"{cps=30}Yes, signore.{/cps}"
     p"{cps=30}I wrote that letter.{/cps}"
     pr"{cps=30}But you just said-{/cps}"
     p"{cps=30}I was mistaken, I have a service where I write love letters for people who cannot write them themselves.{/cps}"
@@ -1095,7 +1100,7 @@ label End2:
     hide puck
     #path fade in center
     show path at center
-    "{cps=30}Path exhales a sigh of relief, and looks you with relief.{/cps}"
+    "{cps=30}Path exhales a sigh of relief, and looks you with thankfulness.{/cps}"
     pat"{cps=30}Thank you, for whatever you did.{/cps}"
     pat"{cps=30}That was almost really bad, and both you and Puck managed to turn it around.{/cps}"
     pat"{cps=30}I’m so lucky, to know clever people.{/cps}"
@@ -1107,7 +1112,7 @@ label End2:
     "{cps=30}Path never got with Poem, she would move out of Venice for a job in Paris.{/cps}"
     "{cps=30}It would be a major shift for Pray, who lost his station and would die two years later of a heart attack.{/cps}"
     "{cps=20}Thus ends our tale, a tale of love, awkward boat rides, and clever thinking.{/cps}"
-    "{cps=20}Ending Two: Happy{/cps}"
+    "{cps=20}Ending Two: Happy.{/cps}"
     $ persistent.restarts+=1
     return
     
@@ -1115,19 +1120,27 @@ label End3:
     #miscommunication ending
     #chang bg canals
     scene bg canal
+    with fade
     stop music fadeout 2.0
-    play music "audio/Music_1.ogg" volume 0.3 fadein 2.0
+    play music "audio/Music_2.ogg" volume 0.3 fadein 2.0
     stop sound fadeout 2.0
     play sound "audio/AMB_Canal.ogg" fadein 2.0 volume 0.5
+    show poem at right
+    show path at left
     "{cps=30}You, Poem and Path are slowly moving down the canal. Poem’s eyes are affixed on you, and Path’s eyes are affixed onto her.{/cps}"
     po"{cps=30}So, how are you liking it?{/cps}"
     "{cps=30}You ask her what she means.{/cps}"
     #music cut out
+    stop music
+    stop sound
     po"{cps=30}This game.{/cps}"
     po"{cps=30}This is a game, isn’t it?{/cps}"
     "{cps=30}she she sh-{/cps}"
-    "{cps=30}She looks terrified{/cps}"
+    "{cps=30}she looks terrified-{/cps}"
+    with pixellate
     #change music fade int
+    play sound "audio/AMB_Canal.ogg" fadein 2.0 volume 0.5
+    play music "audio/Music_2.ogg" fadein 2.0 volume 0.5
     "{cps=30}She smiles and sighs at you in a loving way.{/cps}"
     "{cps=30}Path does the same, looking at her.{/cps}"
     "{cps=30}You all pull into the dock and she hops out, grabbing your arm.{/cps}"
@@ -1140,8 +1153,8 @@ label End3:
     hide path
     #change bg plaza    
     scene bg plaza
-    with fade
     show poem at right
+    with fade
     stop sound fadeout 2.0
     play sound "audio/AMB_Street_1.ogg" fadein 2.0 volume 0.5
     "{cps=30}Poem moves with an unnatural exuberance.{/cps}"
@@ -1152,6 +1165,8 @@ label End3:
     "{cps=30}But the crowd is so loud, and she seems so full of joy.{/cps}"
     #change bg stage
     scene bg pucksshow
+    show poem at right
+    with fade
     stop sound fadeout 2.0
     play sound "audio/AMB_Street_2.ogg" fadein 2.0 volume 0.5
     "{cps=30}She sits down, watching the show with rapt attention.{/cps}"
@@ -1179,11 +1194,11 @@ label End3:
     po"{cps=30}Have a good day si-{/cps}"
     "{cps=30}Poem blinks twice while processing what he just said.{/cps}"
     po"{cps=30}You… wrote it?{/cps}"
-    pat"{cps=30}When I look at you, I see the sun. {/cps}"
-    pat"{cps=30}You blind me. {/cps}"
-    pat"{cps=30}I wish only that, for a moment, I am permitted to know you in this life. {/cps}"
-    pat"{cps=30}You are the tune I hum, the spring in my step. {/cps}"
-    pat"{cps=30}I want only the sadness in your eyes to dissolve, and if that were the only thing I did with my life, I would be satisfied.{/cps}"
+    pat"{cps=30}'When I look at you, I see the sun.'{/cps}"
+    pat"{cps=30}'You blind me.'{/cps}"
+    pat"{cps=30}'I wish only that, for a moment, I am permitted to know you in this life.' {/cps}"
+    pat"{cps=30}'You are the tune I hum, the spring in my step.' {/cps}"
+    pat"{cps=30}'I want only the sadness in your eyes to dissolve, and if that were the only thing I did with my life, I would be satisfied.'{/cps}"
     "{cps=30}She looks at you, astounded and embarrassed.{/cps}"
     "{cps=30}You shrug in response, and say “I tried to talk to you, but you are freakishly strong”.{/cps}"
     "{cps=30}She looks at Path.{/cps}"
@@ -1196,7 +1211,7 @@ label End3:
     "{cps=30}Poem thinks for a moment.{/cps}"
     "{cps=30}You suddenly become aware that everyone in the audience is staring at you three, and the puppet show has stopped.{/cps}"
     "{cps=30}You can even see Puck peeking down from where he controls his marionettes, looking at you with bated breath.{/cps}"
-    "{cps=30}Pale is nearby in his caravan and he is fully not paying attention, doing a sudoku puzzle on a newpaper.{/cps}"
+    "{cps=30}Pale is nearby in his caravan and he is fully not paying attention, doing a word search on a newpaper.{/cps}"
     "{cps=30}Poem finally responds.{/cps}"
     po"{cps=30}Sure.{/cps}"
     "{cps=30}The crowd erupts in claps, whistles and celebration.{/cps}"
@@ -1220,12 +1235,12 @@ label End3:
     with fade
     stop sound fadeout 2.0
     "{cps=30}Two months later, Poem would take an airplane out of the city.{/cps}"
-    "{cps=30}None knew where she was going, not even her father.{/cps}"
+    "{cps=30}No one knew where she was going, not even her father.{/cps}"
     "{cps=30}She simply just disappeared from the face of the world, alive only in the memories of the few people that knew her.{/cps}"
     "{cps=30}Path got very close to knowing her, but it is a goal he could never reach.{/cps}"
     "{cps=20}That idea haunts him, and would continue to do so for many a year beyond.{/cps}"
     "{cps=30}Thus ends our tale, a tale of love, sadness, and lost possabilities.{/cps}"
-    "{cps=30}Ending Three: Sad{/cps}"
+    "{cps=30}Ending Three: Sad.{/cps}"
     $ persistent.restarts+=1
     return
 
@@ -1235,6 +1250,7 @@ label EndS:
     stop sound fadeout 2.0
     stop music fadeout 2.0
     scene bg edge
+    with pixellate
     label EdgeLoop:
         "{cps=30}{b}You are not supposed to be here.{/b}{/cps}"
         "{cps=30}{b}Please, restart the game.{/b}{/cps}"

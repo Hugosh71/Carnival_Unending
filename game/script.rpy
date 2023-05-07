@@ -1,6 +1,6 @@
 ﻿init:
     define config.default_music_volume=0.7
-    default persistent.restarted=0  
+    default persistent.restarts=0  
     default Vclothes = False
     default Cclothes = False
     default Mclothes = False
@@ -662,7 +662,7 @@ label J3:
     jump Kmenu
 
 label Kmenu:
-    if persistent.restarted>=3:
+    if persistent.restarts>=3:
         menu:
             "Path wrote it":
                 jump K1
@@ -852,7 +852,7 @@ label End1:
     "{cps=30}As he hears you and Pray’s footsteps, he turns around with a big grin on his face.{/cps}"
     pat"{cps=30}Hello friend! So thankful for giving h-{/cps}"
     #pray fade in left
-    show pray in left
+    show pray at left
     pr"{cps=30}Hello, boy.{/cps}"
     "{cps=30}Path gulps, mortified.{/cps}"
     pat"{cps=30}Um… greetings, patriarca!{/cps}"
@@ -893,6 +893,7 @@ label End1:
     "{cps=30}You assume the same, and you both run up to the plaza.{/cps}"
     #change bg plaza
     scene bg plaza
+    show pray at left
     with fade
     stop sound fadeout 2.0
     play sound "audio/AMB_Street_1.ogg" fadein 2.0 volume 0.5
@@ -904,6 +905,7 @@ label End1:
     "{cps=30}He is, in fact, that stupid.{/cps}"
     "{cps=30}You walk over to the show stage, hanging your heads in awe of this intellectual failure on the part of Path.{/cps}"
     # change bg Stage
+    show pray at left
     scene bg pucksshow
     with fade
     stop sound fadeout 2.0
@@ -973,7 +975,7 @@ label End1:
     "{cps=30}It is also the role of a parent to cultivate, and eventually, release their child into the open winds of life.{/cps}"
     "{cps=20}Thus ends our tale, a of love, growth and fear.{/cps}"
     "{cps=30}Ending One: Afraid{/cps}"
-    $ persistent.restarted+=1
+    $ persistent.restarts+=1
     return
 
 
@@ -1004,6 +1006,8 @@ label End2:
     # change bg canals
     scene bg canal
     with fade
+    show pray at left
+    show path at right
     stop sound fadeout 2.0
     play sound "audio/AMB_Canal.ogg" fadein 2.0 volume 0.5
     "{cps=30}The three of you arrive at the canals outside the plaza, where you and Path get off slowly.{/cps}"
@@ -1016,6 +1020,7 @@ label End2:
     #change bg plaza
     scene bg plaza
     with fade
+    show pray at left
     stop sound fadeout 2.0
     play sound "audio/AMB_Street_1.ogg" fadein 2.0 volume 0.3
     "{cps=30}You and Pray walk out into the plaza. You can see Puck’s show has amassed a large crowd.{/cps}"
@@ -1027,6 +1032,7 @@ label End2:
     #change bg stage
     scene bg pucksshow
     with fade
+    show pray at left
     stop sound fadeout 2.0
     play sound "audio/AMB_Street_2.ogg" fadein 2.0 volume 0.5
     "{cps=30}Puck is currently going through a scene where a clever peasant tricks a complacent aristocrat into giving him the aristocrat’s wallet.{/cps}"
@@ -1102,7 +1108,7 @@ label End2:
     "{cps=30}It would be a major shift for Pray, who lost his station and would die two years later of a heart attack.{/cps}"
     "{cps=20}Thus ends our tale, a tale of love, awkward boat rides, and clever thinking.{/cps}"
     "{cps=20}Ending Two: Happy{/cps}"
-    $ persistent.restarted+=1
+    $ persistent.restarts+=1
     return
     
 label End3:
@@ -1220,7 +1226,7 @@ label End3:
     "{cps=20}That idea haunts him, and would continue to do so for many a year beyond.{/cps}"
     "{cps=30}Thus ends our tale, a tale of love, sadness, and lost possabilities.{/cps}"
     "{cps=30}Ending Three: Sad{/cps}"
-    $ persistent.restarted+=1
+    $ persistent.restarts+=1
     return
 
 label EndS:

@@ -1,51 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 136, in script
-    scene bg street
-  File "renpy/common/000window.rpy", line 111, in _window_auto_callback
-    _window_hide(auto=True)
-  File "renpy/common/000window.rpy", line 101, in _window_hide
-    renpy.with_statement(trans)
-OSError: Couldn't find file 'audio/Music_.ogg'.
+  File "game/script.rpy", line 855, in script
+    show pray in left
+Exception: Image 'pray' does not accept attributes 'in left'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 136, in script
-    scene bg street
-  File "C:\Users\fanch\OneDrive\Bureau\Ren'py\renpy-8.0.3-sdk\renpy\ast.py", line 1537, in execute
-    statement_name("scene")
-  File "C:\Users\fanch\OneDrive\Bureau\Ren'py\renpy-8.0.3-sdk\renpy\ast.py", line 47, in statement_name
-    i(name)
-  File "renpy/common/000window.rpy", line 111, in _window_auto_callback
-    _window_hide(auto=True)
-  File "renpy/common/000window.rpy", line 101, in _window_hide
-    renpy.with_statement(trans)
-  File "C:\Users\fanch\OneDrive\Bureau\Ren'py\renpy-8.0.3-sdk\renpy\exports.py", line 1657, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "C:\Users\fanch\OneDrive\Bureau\Ren'py\renpy-8.0.3-sdk\renpy\display\core.py", line 2798, in do_with
-    return self.interact(trans_pause=True,
-  File "C:\Users\fanch\OneDrive\Bureau\Ren'py\renpy-8.0.3-sdk\renpy\display\core.py", line 3377, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "C:\Users\fanch\OneDrive\Bureau\Ren'py\renpy-8.0.3-sdk\renpy\display\core.py", line 4103, in interact_core
-    renpy.audio.audio.periodic()
-  File "C:\Users\fanch\OneDrive\Bureau\Ren'py\renpy-8.0.3-sdk\renpy\audio\audio.py", line 1166, in periodic
-    raise_(exc[0], exc[1], exc[2])
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/site-packages/future/utils/__init__.py", line 441, in raise_
-  File "C:\Users\fanch\OneDrive\Bureau\Ren'py\renpy-8.0.3-sdk\renpy\audio\audio.py", line 1144, in periodic_thread_main
-    periodic_pass()
-  File "C:\Users\fanch\OneDrive\Bureau\Ren'py\renpy-8.0.3-sdk\renpy\audio\audio.py", line 1086, in periodic_pass
-    c.periodic()
-  File "C:\Users\fanch\OneDrive\Bureau\Ren'py\renpy-8.0.3-sdk\renpy\audio\audio.py", line 517, in periodic
-    topf = load(filename)
-  File "C:\Users\fanch\OneDrive\Bureau\Ren'py\renpy-8.0.3-sdk\renpy\audio\audio.py", line 70, in load
-    rv = renpy.loader.load(fn)
-  File "C:\Users\fanch\OneDrive\Bureau\Ren'py\renpy-8.0.3-sdk\renpy\loader.py", line 820, in load
-    raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'audio/Music_.ogg'.
+  File "game/script.rpy", line 855, in script
+    show pray in left
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\ast.py", line 1408, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\ast.py", line 1371, in show_imspec
+    renpy.config.show(name,
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\exports.py", line 686, in show
+    if not base.find_target() and renpy.config.missing_show:
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\image.py", line 414, in find_target
+    self.target = target._duplicate(a)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\core.py", line 397, in _duplicate
+    args.extraneous()
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\core.py", line 265, in extraneous
+    raise Exception("Image '{}' does not accept attributes '{}'.".format(
+Exception: Image 'pray' does not accept attributes 'in left'.
 
 Windows-10-10.0.22621 AMD64
 Ren'Py 8.0.3.22090809
 Carnival Unending 1.0
-Sun May  7 01:31:04 2023
+Sat May  6 20:56:53 2023

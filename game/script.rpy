@@ -131,7 +131,8 @@ label nextScene:
         "{cps=30}You walk outside in your outfit, ready to seize the day!{/cps}"
         "{cps=30}After locking your door behind you, walking down the stairs, and grabbing a quick coffee from the complimentary breakfast buffet, you finally step out of the hotel into the surrounding street.{/cps}"
         stop music fadeout 2.0
-        play music "audio/Music_1.ogg" volume 0.5 fadein 2.0
+        play music "audio/Music_1.ogg" volume 0.3 fadein 2.0
+        play sound "audio/AMB_Street_1.ogg" volume 0.8 fadein 1.0 
         #change bg street
         scene bg street
         with fade
@@ -158,6 +159,8 @@ label street:
 
 ############################# ACT 1
 label plaza:
+    stop sound fadeout 2.0
+    play sound "audio/AMB_Street_1.ogg" volume 0.2 fadein 1.0
     define p=Character("Puck",color="#308CDD")
     #change bg plaza
     scene bg plaza
@@ -171,17 +174,23 @@ label plazamenu:
     menu:
        
         "I go to the small stage.":
+            stop sound fadeout 1.0
+            play sound "audio/AMB_Street_2.ogg" volume 0.5 fadein 2.0
             if not PuckMet: 
                 jump C1first
             else:
                 jump C1                
         "I go to the shopkeeper's stand.":
+            stop sound fadeout 1.0
+            play sound "audio/moderncafe.mp3" volume 0.5 fadein 2.0
             if not PaleMet: 
                 jump C2first
             else:
                 jump C2
                 
         "I go to the canals.":
+            stop sound fadeout 1.0
+            play sound "audio/AMB_Canal.ogg" volume 0.5 fadein 2.0
             if not PathMet: 
                 jump C3first
             else:
@@ -516,6 +525,8 @@ label Act2:
     scene bg churchoutside
     with fade
     show path
+    stop sound fadeout 1.0
+    play sound "audio/AMB_Church_Inside_Crowded.ogg" volume 0.5 fadein 2.0
     "{cps=30}You pull into a small dock outside the church and Path ties the gondolier to a long wooden pole.{/cps}"
     "{cps=30}He seems uncomfortable around here, afraid of something…{/cps}"
     "{cps=30}Or someone.{/cps}"
@@ -539,6 +550,9 @@ label Imenu:
             #change bg church , fade in
             scene bg churchinside
             with fade
+            stop music fadeout 2.0
+            stop sound fadeout 2.0
+            play sound "audio/FugueChurchOrgan.mp3" volume 0.5 fadein 2.0
             if not PrayMet:
                 jump I1first
             else:
@@ -809,6 +823,10 @@ label End1:
     #change bg outside church
     scene bg churchoutside
     with fade
+    stop music fadeout 2.0
+    play music "audio/Music_1.ogg" volume 0.3 fadein 2.0
+    stop sound fadeout 2.0
+    play sound "audio/AMB_Church_Inside_Crowded" fadein 2.0 volume 0.5
     "{cps=30}Pray rushes outside in a power walk of vindictive and fatherly rage.{/cps}"
     "{cps=30}You follow, both out of curiosity and guilt for your breach of Path’s trust.{/cps}"
     "{cps=30}Once you both reach the canal docks, you see Path merrily cleaning any splashed water that got in his boat while whistling.{/cps}"
@@ -846,6 +864,8 @@ label End1:
     #fade to canals
     scene bg canal
     with fade
+    stop sound fadeout 2.0
+    play sound "audio/AMB_Canal.ogg" fadein 2.0 volume 0.5
     "{cps=30}After a thrilling and high-budget chase sequence with fancy effects and amazing soundtrack plays, you and Pray find yourselves back at the Plaza’s dock.{/cps}"
     "{cps=30}Pray tips the gondolier and steps off, you do the same.{/cps}"
     "{cps=30}Thats when you both see that Path’s boat has aready been docked.{/cps}"
@@ -857,6 +877,8 @@ label End1:
     #change bg plaza
     scene bg plaza
     with fade
+    stop sound fadeout 2.0
+    play sound "audio/AMB_Street_1.ogg" fadein 2.0 volume 0.5
     "{cps=30}You can see a large congregation around Puck’s stage, the show must be starting.{/cps}"
     pr"{cps=30}You don’t think…{/cps}"
     pr"{cps=30}He couldn’t be THAT stupid, right?{/cps}"
@@ -867,6 +889,8 @@ label End1:
     # change bg Stage
     scene bg pucksshow
     with fade
+    stop sound fadeout 2.0
+    play sound "audio/AMB_Street_2.ogg" fadein 2.0 volume 0.5
     "{cps=30}You see that the puppet show has started, and there are two marionettes in the stand: A high-voiced female puppet and a gravelly male puppet.{/cps}"
     "{cps=30}Pray wordlessly walks up to the stand, reaches up, and pulls Path down by his nose.{/cps}"
     #path fade in right
@@ -941,6 +965,10 @@ label End2:
     #change outside church
     scene bg churchoutside
     with fade
+    stop music fadeout 2.0
+    play music "audio/Music_1.ogg" volume 0.3 fadein 2.0
+    stop sound fadeout 2.0
+    play sound "audio/AMB_Church_Inside_Crowded.ogg" fadein 2.0 volume 0.5
     "{cps=30}Pray rushes outside in a power walk of vindictive and fatherly rage.{/cps}"
     "{cps=30}You follow, both out of curiosity and guilt for throwing Puck under the bus.{/cps}"
     #pray fade in left
@@ -959,6 +987,8 @@ label End2:
     # change bg canals
     scene bg canal
     with fade
+    stop sound fadeout 2.0
+    play sound "audio/AMB_Canal.ogg" fadein 2.0 volume 0.5
     "{cps=30}The three of you arrive at the canals outside the plaza, where you and Path get off slowly.{/cps}"
     "{cps=30}Path is about to follow you and Pray, but you motion for him to stay.{/cps}"
     "{cps=30}Path nods.{/cps}"
@@ -969,6 +999,8 @@ label End2:
     #change bg plaza
     scene bg plaza
     with fade
+    stop sound fadeout 2.0
+    play sound "audio/AMB_Street_1.ogg" fadein 2.0 volume 0.3
     "{cps=30}You and Pray walk out into the plaza. You can see Puck’s show has amassed a large crowd.{/cps}"
     pr"{cps=30}He must be over there.{/cps}"
     pr"{cps=30}I’m going to talk to him, you have already done enough.{/cps}"
@@ -978,6 +1010,8 @@ label End2:
     #change bg stage
     scene bg pucksshow
     with fade
+    stop sound fadeout 2.0
+    play sound "audio/AMB_Street_2.ogg" fadein 2.0 volume 0.5
     "{cps=30}Puck is currently going through a scene where a clever peasant tricks a complacent aristocrat into giving him the aristocrat’s wallet.{/cps}"
     "{cps=30}The crowd laughs, boos, and claps as the scene unfolds, yet Pray remains stagnant, waiting for an intermission so he can talk to Puck backstage.{/cps}"
     "{cps=30}Eventually, that intermission comes, and you follow them again {/cps}"
@@ -1058,6 +1092,10 @@ label End3:
     #miscommunication ending
     #chang bg canals
     scene bg canal
+    stop music fadeout 2.0
+    play music "audio/Music_1.ogg" volume 0.3 fadein 2.0
+    stop sound fadeout 2.0
+    play sound "audio/AMB_Canal.ogg" fadein 2.0 volume 0.5
     "{cps=30}You, Poem and Path are slowly moving down the canal. Poem’s eyes are affixed on you, and Path’s eyes are affixed onto her.{/cps}"
     po"{cps=30}So, how are you liking it?{/cps}"
     "{cps=30}You ask her what she means.{/cps}"
@@ -1081,6 +1119,8 @@ label End3:
     scene bg plaza
     with fade
     show poem at right
+    stop sound fadeout 2.0
+    play sound "audio/AMB_Street_1.ogg" fadein 2.0 volume 0.5
     "{cps=30}Poem moves with an unnatural exuberance.{/cps}"
     "{cps=30}Almost like this is all an excuse to distract herself from something.{/cps}"
     po"{cps=30}Oh! There’s a puppet show over there!{/cps}"
@@ -1089,6 +1129,8 @@ label End3:
     "{cps=30}But the crowd is so loud, and she seems so full of joy.{/cps}"
     #change bg stage
     scene bg pucksshow
+    stop sound fadeout 2.0
+    play sound "audio/AMB_Street_2.ogg" fadein 2.0 volume 0.5
     "{cps=30}She sits down, watching the show with rapt attention.{/cps}"
     "{cps=30}Puck’s show is currently playing a scene where two lovers keep passing each other without meeting.{/cps}"
     "{cps=30}As you two sit down to watch, you hear something in the distance.{/cps}"
@@ -1153,6 +1195,7 @@ label End3:
     #change bg black
     scene black
     with fade
+    stop sound fadeout 2.0
     "{cps=30}Two months later, Poem would take an airplane out of the city.{/cps}"
     "{cps=30}None knew where she was going, not even her father.{/cps}"
     "{cps=30}She simply just disappeared from the face of the world, alive only in the memories of the few people that knew her.{/cps}"
@@ -1166,6 +1209,8 @@ label End3:
 label EndS:
     #Secret Ending
     #change bg end of the world
+    stop sound fadeout 2.0
+    stop music fadeout 2.0
     scene bg edge
     label EdgeLoop:
         "{cps=30}{b}You are not supposed to be here.{/b}{/cps}"

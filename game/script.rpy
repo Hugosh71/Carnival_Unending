@@ -223,6 +223,7 @@ label C1first:
 label C1:
     scene bg pucksshow
     with fade
+    show puck
     p"{cps=30}How can I help you Signore and/or Signora?{/cps}"
     jump Dmenu
 
@@ -308,6 +309,7 @@ label C2first:
 label C2:
     scene bg caravan
     with fade
+    show pale
     p"{cps=30}Yo, what do ya want?{/cps}"
     jump Emenu
 
@@ -323,6 +325,7 @@ label Emenu:
             jump E3
            
         "I return to the plaza.":
+            stop sound fadeout 2.0
             play music "audio/Music_1.ogg" volume 0.3 fadein 2.0
             jump E4
 
@@ -412,6 +415,9 @@ label C3first:
     jump Gmenu
 
 label C3:
+    scene bg canal
+    with fade
+    show path
     pat"{cps=30}How can I help you, signore/signora?{/cps}"
     jump Gmenu
 
@@ -589,6 +595,7 @@ label I1first:
     jump Jmenu
 
 label I1:
+    show pray
     pr"{cps=30}Do you need anything?{/cps}"
     jump Jmenu
 
@@ -748,6 +755,7 @@ label L2:
     jump PoemStartBookmark
 
 label PoemStartBookmark:
+    show poem
     po"{cps=30}Is there something you would like to talk to me about?{/cps}"
     jump Mmenu
 
@@ -834,7 +842,7 @@ label End1:
     stop music fadeout 2.0
     play music "audio/Music_1.ogg" volume 0.3 fadein 2.0
     stop sound fadeout 2.0
-    play sound "audio/AMB_Church_Inside_Crowded" fadein 2.0 volume 0.5
+    play sound "audio/AMB_Church_Inside_Crowded.ogg" fadein 2.0 volume 0.5
     "{cps=30}Pray rushes outside in a power walk of vindictive and fatherly rage.{/cps}"
     "{cps=30}You follow, both out of curiosity and guilt for your breach of Path’s trust.{/cps}"
     "{cps=30}Once you both reach the canal docks, you see Path merrily cleaning any splashed water that got in his boat while whistling.{/cps}"

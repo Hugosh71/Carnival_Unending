@@ -183,6 +183,7 @@ label plazamenu:
             else:
                 jump C1                
         "I go to the shopkeeper's stand.":
+            stop music fadeout 2.0
             stop sound fadeout 1.0
             play sound "audio/moderncafe.mp3" volume 0.5 fadein 2.0
             if not PaleMet: 
@@ -220,6 +221,8 @@ label C1first:
     jump Dmenu
 
 label C1:
+    scene bg pucksshow
+    with fade
     p"{cps=30}How can I help you Signore and/or Signora?{/cps}"
     jump Dmenu
 
@@ -303,6 +306,8 @@ label C2first:
     jump Emenu
 
 label C2:
+    scene bg caravan
+    with fade
     p"{cps=30}Yo, what do ya want?{/cps}"
     jump Emenu
 
@@ -318,6 +323,7 @@ label Emenu:
             jump E3
            
         "I return to the plaza.":
+            play music "audio/Music_1.ogg" volume 0.3 fadein 2.0
             jump E4
 
 label E1:

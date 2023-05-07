@@ -171,6 +171,8 @@ label plaza:
     "{cps=30}Where do you go?{/cps}"
 
 label plazamenu:
+    scene bg plaza
+    with fade
     menu:
        
         "I go to the small stage.":

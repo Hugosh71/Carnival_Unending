@@ -95,6 +95,8 @@ define config.end_game_transition = None
 ## A variable to set the transition used when the game starts does not exist.
 ## Instead, use a with statement after showing the initial scene.
 
+## Any screen with the layer tag 'achievement_notify' will appear at the top.
+define config.top_layers = [ 'achievement_notify' ]
 
 ## Window management ###########################################################
 ##

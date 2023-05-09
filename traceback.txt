@@ -1,43 +1,81 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-OSError: Couldn't find file 'Music_2.ogg'.
+  File "game/script.rpy", line 36, in script
+    "{cps=30}Your consciousness stirs as sound comes into focus. It’s coming from outside.{/cps}"
+  File "game/script.rpy", line 36, in script
+    "{cps=30}Your consciousness stirs as sound comes into focus. It’s coming from outside.{/cps}"
+  File "game/achievement_screen.rpy", line 144, in execute
+    screen achievement_notification_catcher():
+  File "game/achievement_screen.rpy", line 144, in execute
+    screen achievement_notification_catcher():
+  File "game/achievement_screen.rpy", line 148, in execute
+    if len(achievement_notification_list) > 0 and not renpy.get_screen('achievement_notification'):
+  File "game/achievement_screen.rpy", line 148, in <module>
+    if len(achievement_notification_list) > 0 and not renpy.get_screen('achievement_notification'):
+Exception: Unknown layer 'achievement_notify'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
-    python hide:
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\ast.py", line 1131, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\python.py", line 1061, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
-    python hide:
-  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
-    ui.interact()
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\bootstrap.py", line 277, in bootstrap
+    renpy.main.main()
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\main.py", line 660, in main
+    run(restart)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\main.py", line 146, in run
+    renpy.execution.run_context(True)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\execution.py", line 938, in run_context
+    context.run()
+  File "game/script.rpy", line 36, in script
+    "{cps=30}Your consciousness stirs as sound comes into focus. It’s coming from outside.{/cps}"
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/site-packages/future/utils/__init__.py", line 441, in raise_
+  File "game/script.rpy", line 36, in script
+    "{cps=30}Your consciousness stirs as sound comes into focus. It’s coming from outside.{/cps}"
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\ast.py", line 921, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\exports.py", line 1373, in say
+    who(what, *args, **kwargs)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\character.py", line 1266, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\character.py", line 927, in do_display
+    display_say(who,
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\character.py", line 666, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
   File "C:\Users\space\renpy-8.0.3-sdk\renpy\ui.py", line 299, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\core.py", line 3377, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\core.py", line 4103, in interact_core
-    renpy.audio.audio.periodic()
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\audio\audio.py", line 1166, in periodic
-    raise_(exc[0], exc[1], exc[2])
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/site-packages/future/utils/__init__.py", line 441, in raise_
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\audio\audio.py", line 1144, in periodic_thread_main
-    periodic_pass()
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\audio\audio.py", line 1086, in periodic_pass
-    c.periodic()
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\audio\audio.py", line 517, in periodic
-    topf = load(filename)
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\audio\audio.py", line 70, in load
-    rv = renpy.loader.load(fn)
-  File "C:\Users\space\renpy-8.0.3-sdk\renpy\loader.py", line 820, in load
-    raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'Music_2.ogg'.
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\core.py", line 3810, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\core.py", line 582, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\core.py", line 582, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\core.py", line 582, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\screen.py", line 451, in visit_all
+    callback(self)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\core.py", line 3810, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\screen.py", line 462, in per_interact
+    self.update()
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\screen.py", line 653, in update
+    self.screen.function(**self.scope)
+  File "game/achievement_screen.rpy", line 144, in execute
+    screen achievement_notification_catcher():
+  File "game/achievement_screen.rpy", line 144, in execute
+    screen achievement_notification_catcher():
+  File "game/achievement_screen.rpy", line 148, in execute
+    if len(achievement_notification_list) > 0 and not renpy.get_screen('achievement_notification'):
+  File "game/achievement_screen.rpy", line 148, in <module>
+    if len(achievement_notification_list) > 0 and not renpy.get_screen('achievement_notification'):
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\screen.py", line 1090, in get_screen
+    sd = sl.get_displayable_by_tag(layer, tag)
+  File "C:\Users\space\renpy-8.0.3-sdk\renpy\display\core.py", line 1515, in get_displayable_by_tag
+    raise Exception("Unknown layer %r." % layer)
+Exception: Unknown layer 'achievement_notify'.
 
 Windows-10-10.0.22621 AMD64
 Ren'Py 8.0.3.22090809
 Carnival Unending 1.0
-Mon May  8 21:47:50 2023
+Tue May  9 09:22:16 2023

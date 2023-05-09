@@ -32,6 +32,7 @@ init:
 ################## Prologue
 label start:
     "{i}{cps=20}Che cos'è il crollo? Semplice, è la fine di tutto. La morte senza pace, la morte senza senso. Indossate le maschere, bambini, e ignorate la melodia delle bombe.{/cps}{/i}"
+    $ Achievement.add(achievement_name['places'])
     "{cps=30}Your consciousness stirs as sound comes into focus. It’s coming from outside.{/cps}"
     play music "audio/AMB_Street_1.ogg" volume 0.2 fadein 1.0
     "{cps=30}You roll around in bed as your nerves slowly come back online from slumber, and your sense of smell brings in the brackish water of the canals, the floral breeze of various patios, and the mirad fried pastries and tarts that are being sold out of stands and bakeries nearby.{/cps}"
@@ -56,6 +57,7 @@ label prologuemenu:
             if not choice_A2_made: 
                 jump A2
             else:
+                $ Achievement.add(achievement_name['centhusiast'])
                 "{cps=30}You already did that.{/cps}"
                 jump prologuemenu
         "I unpack my bags.":
@@ -154,7 +156,7 @@ label nextScene:
         "{cps=30}Whoops.{/cps}"
         scene black
         with fade
-
+        $ Achievement.add(achievement_name['nude'])
         "{cps=30}Bad Ending: Nudist{/cps}"
         return
 
@@ -705,6 +707,7 @@ label K3:
     #glitch effect for 5 seconds
     #change character pray disappears without fade
     hide pray
+    with Pixellate (3,5)
     stop music
     #bg black fade
     scene black
@@ -987,6 +990,7 @@ label End1:
     "{cps=30}And Pray saw that, despite how scary it sounds, It is not just the role of a parent to protect…{/cps}"
     "{cps=30}It is also the role of a parent to cultivate, and eventually, release their child into the open winds of life.{/cps}"
     "{cps=20}Thus ends our tale, a of love, growth and fear.{/cps}"
+    $ Achievement.add(achievement_name['afraid'])
     "{cps=30}Ending One: Afraid.{/cps}"
     $ persistent.restarts+=1
     return
@@ -1122,6 +1126,7 @@ label End2:
     "{cps=30}Path never got with Poem, she would move out of Venice for a job in Paris.{/cps}"
     "{cps=30}It would be a major shift for Pray, who lost his station and would die two years later of a heart attack.{/cps}"
     "{cps=20}Thus ends our tale, a tale of love, awkward boat rides, and clever thinking.{/cps}"
+    $ Achievement.add(achievement_name['happy'])
     "{cps=20}Ending Two: Happy.{/cps}"
     $ persistent.restarts+=1
     return
@@ -1253,6 +1258,7 @@ label End3:
     "{cps=30}Path got very close to knowing her, but it is a goal he could never reach.{/cps}"
     "{cps=20}That idea haunts him, and would continue to do so for many a year beyond.{/cps}"
     "{cps=30}Thus ends our tale, a tale of love, sadness, and lost possabilities.{/cps}"
+    $ Achievement.add(achievement_name['sad'])
     "{cps=30}Ending Three: Sad.{/cps}"
     $ persistent.restarts+=1
     return

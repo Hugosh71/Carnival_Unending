@@ -306,6 +306,8 @@ screen navigation():
             textbutton _("Save") action ShowMenu("save")
 
         textbutton _("Load") action ShowMenu("load")
+        
+        textbutton _('Achievements') action ShowMenu("achievement_menu")
 
         textbutton _("Preferences") action ShowMenu("preferences")
 

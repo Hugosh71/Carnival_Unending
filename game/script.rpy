@@ -1,6 +1,12 @@
-﻿init:
+init:
     define config.default_music_volume=0.7
     default persistent.restarts=0  
+    default persistent.nudistend=0
+    default persistent.sleepyend=0
+    default persistent.end1=0
+    default persistent.end2=0
+    default persistent.end3=0
+    default persistent.ends=0
     default Vclothes = False
     default Cclothes = False
     default Mclothes = False
@@ -148,6 +154,7 @@ label nextScene:
         "{cps=30}Whoops.{/cps}"
         scene black
         with fade
+
         "{cps=30}Bad Ending: Nudist{/cps}"
         return
 
@@ -246,7 +253,7 @@ label D1:
     p "{cps=30}Well friend, I have much to tell!{/cps}" 
     "{cps=30}You can see Puck's demeanor change, like that of an unwinding spring.{/cps}" 
     "{cps=30}He has wanted to talk to someone about his past for a very long time.{/cps}" 
-    p "{cps=30}I started my life as a lowly butcher’s son, dreaming of the world outside my rural town in the tuscan countryside.{/cps}" 
+    p "{cps=30}I started my life as a lowly butcher’s son, dreaming of the world outside my rural town in the Tuscan countryside.{/cps}" 
     p "{cps=30}I found my release in theatre and performance, but every night I was forced back into my humdrum home.{/cps}" 
     p "{cps=30}Thats why I hatched a plan… I tricked my father into leaving his keys on the table then used a distraction to draw him outside and buy me enough time to take his car and drive off on the open road!{/cps}" 
     p "{cps=30}Freedom was mine at last!{/cps}" 
@@ -603,7 +610,6 @@ label Jmenu:
     menu:
         "Can you tell me about yourself?":
             jump J1
-
            
         "Can you tell me about the locals?":
             jump J2
@@ -974,6 +980,8 @@ label End1:
     pr"{cps=30}I need it to.{/cps}"
     scene black
     with fade
+    stop music fadeout 2.0
+    play music "audio/Music_2.ogg" volume 0.3 fadein 2.0
     "{cps=30}And so it was, Pray and Path may not have got along and certainly would not for years to come, but the two had reached a kind of understanding.{/cps}"
     "{cps=30}Path saw that the patriarch was not as imposing as he seemed, and that Pray was just as, if not more, afraid than he was.{/cps}"
     "{cps=30}And Pray saw that, despite how scary it sounds, It is not just the role of a parent to protect…{/cps}"
@@ -1106,6 +1114,8 @@ label End2:
     pat"{cps=30}I’m so lucky, to know clever people.{/cps}"
     scene black
     with fade
+    stop music fadeout 2.0
+    play music "audio/Music_2.ogg" volume 0.3 fadein 2.0
     "{cps=30}And so it was, you three all got food later and discussed the mornings events.{/cps}"
     "{cps=30}Puck never asked for anything in return from Path for what he did, and resolved to never mention it again.{/cps}"
     "{cps=30}Puck also gave Path a lengthy discussion about smarter practices, confidence, respect, and the benefits of online dating.{/cps}"
@@ -1217,6 +1227,8 @@ label End3:
     "{cps=30}The crowd erupts in claps, whistles and celebration.{/cps}"
     "{cps=30}Path smiles with a big goofy grin on his face.{/cps}"
     po"{cps=30}But first, lets finish watching this show.{/cps}"
+    stop music fadeout 2.0
+    play music "audio/Music_2.ogg" volume 0.3 fadein 2.0
     "{cps=30}And so it was, Poem and Path sat next to each other, actually interacting for the first time.{/cps}"
     "{cps=30}They did later go to that coffee shop to talk, and they found that they had a lot in common.{/cps}"
     "{cps=30}They both liked similar movies, music, and restaraunts around Venice.{/cps}"
@@ -1234,6 +1246,7 @@ label End3:
     scene black
     with fade
     stop sound fadeout 2.0
+    stop music fadeout 4.5
     "{cps=30}Two months later, Poem would take an airplane out of the city.{/cps}"
     "{cps=30}No one knew where she was going, not even her father.{/cps}"
     "{cps=30}She simply just disappeared from the face of the world, alive only in the memories of the few people that knew her.{/cps}"

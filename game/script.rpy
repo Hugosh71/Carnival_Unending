@@ -28,7 +28,8 @@ init:
     $ beggingresult=0
     $ suspicion=0
     $ suspicionmod=0
-    $ arrestchance=0
+    $ arrestresult=0
+    $ smoochresult=0
     default choice_F1_made=False
     
 
@@ -77,7 +78,15 @@ label A1:
     $ choice_A1_made=True
     "{cps=30}You shower and put on some clothes as the sounds of crowded streets and happy people flow in from your hotel room’s window.{/cps}"
     "{cps=30}What kind of outfit do you put on?{/cps}"
-    jump continueA1
+    menu:
+        "A fierce, unique outfit. One that showcases my personality.":
+            jump B1
+        "A comfortable, modern outfit. One that I can walk around in.":
+            jump B2
+        "A minimalistic, ‘just crawled out of bed’ outfit. One that tells everyone ‘I didn’t sleep well last night’.":
+            jump B3
+        "A traditional, carnival-specific outfit. One that hides my identity.":
+            jump B4
 
 label A2:
     $ choice_A2_made=True
@@ -95,25 +104,14 @@ label A3:
 label A4:
     $ choice_A4_made=True
     "{cps=30}You decide to leave the room and explore the city.{/cps}"
-    jump nextScene
-
-label continueA1:
-
-    menu:
-        "A fierce, unique outfit. One that showcases my personality.":
-            jump B1
-        "A comfortable, modern outfit. One that I can walk around in.":
-            jump B2
-        "A minimalistic, ‘just crawled out of bed’ outfit. One that tells everyone ‘I didn’t sleep well last night’.":
-            jump B3
-        "A traditional, carnival-specific outfit. One that hides my identity.":
-            jump B4
+    jump clothescheck
 
 label B1:
     "{cps=30}You put on the outfit, bright colors and tassles envelop you. You still leave a good amount of skin showing, naturally.{/cps}"
 
     $ Vclothes = True
     $ moneymod=2
+    $ suspicionmod=4
     jump prologuemenu
 
 label B2:
@@ -121,6 +119,7 @@ label B2:
 
     $ Cclothes = True
     $ moneymod=-1
+    $ suspicionmod=-5
     jump prologuemenu
 
 label B3:
@@ -128,6 +127,7 @@ label B3:
 
     $ Mclothes = True
     $ moneymod=1
+    $ suspicionmod=-2
     jump prologuemenu
 
 label B4:
@@ -135,9 +135,10 @@ label B4:
 
     $ Tclothes = True
     $ moneymod=3
+    $ suspicionmod=7
     jump prologuemenu
 
-label nextScene:
+label clothescheck:
     if Vclothes or Cclothes or Mclothes or Tclothes:
         "{cps=30}You walk outside in your outfit, ready to seize the day!{/cps}"
         "{cps=30}After locking your door behind you, walking down the stairs, and grabbing a quick coffee from the complimentary breakfast buffet, you finally step out of the hotel into the surrounding street.{/cps}"
@@ -149,8 +150,6 @@ label nextScene:
         with fade
         jump street
         
-        
-
     else:
         "{cps=30}You walk outside, still fully nude after your shower…{/cps}"
         "{cps=30}Either you forgot to put on clothes due to morning lethargy, or you are just a very aggressive nudist.{/cps}"
@@ -586,12 +585,128 @@ label G4:
 
 label C4:
     "{cps=30}You start begging for money…{/cps}"
-    $ beggingresult=renpy.random.randint(1, 10) + moneymod
-    $ money+=beggingresult
-    "You got [beggingresult] money."
-    "You currently have [money] money."
-    $ beggingresult=0
-    jump plazamenu
+    $ arrestresult=renpy.random.randint(1,100) + suspicionmod + suspicion
+    if arrestresult>95:
+        "{cps=30}As you hold out your palms for money, you feel a hand on your shoulder.{/cps}"
+        "{cps=30}You turn around and see two police officers standing behind you.{/cps}"
+        "{cps=30}'Singore/Signora, you are aware that begging is banned in Venice.'{/cps}"
+        "{cps=30}'We are going to request your passport and papers, please.'{/cps}"
+        "{cps=30}What do you do?{/cps}"
+        menu:
+            "I distract the police officers with a cool dance and song, cuban pete style.":
+                jump ArrestSong
+
+            "I throw a brick at one of them.":
+                jump AssaultOfficer
+
+            "I do exactly what they say.":
+                jump BootLicker
+
+            "I make out with them.":
+                jump BootKisser
+    else:
+        $ suspicion+=2
+        $ beggingresult=renpy.random.randint(1, 10) + moneymod
+        $ money+=beggingresult
+        "{cps=30}You got [beggingresult] money.{/cps}"
+        "{cps=30}You currently have [money] money.{/cps}"
+        $ beggingresult=0
+        jump plazamenu
+
+label ArrestSong:
+    "{cps=30}You start dancing, to everyone's dismay.{/cps}"
+    "{cps=30}'W... what are you doing?'{/cps}"
+    "{cps=30}You yell out 'This, baby!'{/cps}"
+    "{cps=30}You start singing after hitting a cool pose.{/cps}"
+    "{cps=30}'I'm just a lil guy, and I kinda wonder why, everyone wants to limit me, wants me to die!'{/cps}"
+    "{cps=30}'I'm just a ity dude, and I gotta lotta tude, so don't try to stop me, stop being rude!'{/cps}"
+    "{cps=30}'Just… dance… to… this… song! It's not wrong, sing along!'{/cps}"
+    "{cps=30}'Nod your head, clap your hands, take a stance, take a chance!'{/cps}"
+    "{cps=30}You look back over at the police officers, who are both doing a conga line with literally every single person in the plaza.{/cps}"
+    "{cps=30}You join them, and the rest of the day is a blur.{/cps}"
+    scene black
+    with fade
+    "{cps=30}Meanwhile, on an international news station's programming:{/cps}"
+    "{cps=30}'Breaking news!'{/cps}" 
+    "{cps=30}'Every single person in Venice and surrounding territories have entered a trance-like state and have started forming strange, seemingly choreographed dance routines.'{/cps}"
+    "{cps=30}'It appears these people have been dancing for three hours straight, and this condition seems to effect anyone who hears a song radiating through the cities plaza and emergency broadcast system.'{/cps}"
+    "{cps=30}'More on this incident after the break...'{/cps}"
+    "{cps=30}Bad Ending: Partied too hard.{/cps}"
+    return
+        
+label AssaultOfficer:
+    "{cps=30}You bend down, grab an {color=#f00}EXCEEDINGLY CONVENIENT{/color} brick off the ground and throw it at one of the police officers.{/cps}"
+    "{cps=30}'Arggh!'{/cps}"
+    $ Achievement.add(achievement_name['attack'])
+    "{cps=30}'Oh now you've done it!'{/cps}"
+    "{cps=30}You knock one of the officers unconcious, but the other one is rushing towards you.{/cps}"
+    "{cps=30}How do you react?{/cps}"
+    menu:  
+        "Dodge":
+            "{cps=30}You dodge to the right...{/cps}"
+            "{cps=30}But he predicts your plan and sweeps your legs!{/cps}"
+            "{cps=30}Everything goes dark...{/cps}"
+            scene black
+            with fade
+            "{cps=30}Bad Ending: Violence is not the answer.{/cps}"
+            return
+        "Punch":
+            "{cps=30}As the officer runs towards you, you punch him in the face...{/cps}"
+            "{cps=30}He falls down in an instant, and you make a break for it!{/cps}"
+            scene black
+            with fade
+            stop music fadeout 2.0
+            play music "audio/Music_2.ogg" volume 0.3 fadein 2.0
+            $ Achievement.add(achievement_name['finale'])
+            "{cps=30}And so it was, you sprinted out of the city and onto the fastest airplane back home.{/cps}"
+            "{cps=30}Part of you is sad that you missed out on a large chunk of your vacation, but most of you is glad that you are not in prison for assaulting two officers.{/cps}"
+            "{cps=30}Ending Six: Violence is the answer.{/cps}"
+            return
+
+label BootLicker:
+    "{cps=30}You look down sadly and hold forward your hands to be cuffed.{/cps}" 
+    "{cps=30}The officers both nod at each other and bring you over to their car.{/cps}"
+    scene black
+    with fade
+    "{cps=30}Bad Ending: Boot Licker.{/cps}"
+    return
+
+label BootKisser:
+    "{cps=30}You decide to utilize your feminine and/or masculine wiles on the officers.{/cps}"
+    $ smoochresult=renpy.random.randint(0,1)
+    "{cps=30}You swoop your hair, wink, and do a sexy pose{/cps}"
+    "{cps=30}You lean forward to kiss one of them...{/cps}"
+    if smoochresult=1:
+        "{cps=30}The officer kisses you back, and holds you in his arms.{/cps}"
+        "{cps=30}When your lips seperate, he moves a strand of your hair away from your eyes.{/cps}"
+        "{cps=30}'You are the most gorgeous person I have ever met'.{/cps}"
+        "{cps=30}The other officer looks at him, confused and upset.{/cps}"
+        "{cps=30}'Mario! What are you doing?'{/cps}"
+        "{cps=30}'You have a wife and child!'{/cps}"
+        "{cps=30}The officer who just kissed you looks back at his comrade.{/cps}"
+        "{cps=30}'That Mario is dead, I have been reborn in the kiss of this angel.'{/cps}"
+        "{cps=30}'Mario, what the fuck is wrong with you?'{/cps}"
+        "{cps=30}'You know what, fine.'{/cps}"
+        "{cps=30}'I'm leaving.'{/cps}"
+        "{cps=30}The officer leaves as Mario holds your body delicately{/cps}"
+        "{cps=30}'You want to have some breakfast in bed?'{/cps}"
+        stop music fadeout 2.0
+        play music "audio/Music_2.ogg" volume 0.3 fadein 2.0
+        $ Achievement.add(achievement_name['finale'])
+        "{cps=30}And so it was, you boned that police officer.{/cps}"
+        "{cps=30}Good job, I guess?{/cps}"
+        $ Achievement.add(achievement_name['casa'])
+        "{cps=30}Ending Five: Casanova.{/cps}"
+        return 
+    else:
+        "{cps=30}'What are you doing?'{/cps}"
+        "{cps=30}You whisper in his ear: 'Trying to kiss you.'{/cps}"
+        "{cps=30}'I'm in a devoted relationship with my lovely wife and while I am flattered this does not change the fact we need to take you down do the station.'{/cps}"
+        "{cps=30}Well, damn it.{/cps}"
+        scene black
+        with fade
+        "{cps=30}Bad Ending: Rejected.{/cps}"
+        
     
 ####################### ACT 2
 label Act2:
@@ -615,9 +730,9 @@ label Act2:
     "{cps=30}This part of this city is much less crowded than the plaza, but there are still pedestrians walking from to and fro.{/cps}"
     "{cps=30}You see the entrance to the church, a small park next to it with many benches, and the path to the canals where you came from.{/cps}"
     "{cps=30}Where do you go?{/cps}"
-    jump Imenu
+    jump churchmenu
 
-label Imenu:
+label churchmenu:
     menu:
         "I go into the church":
             "{cps=30}You walk into the church…{/cps}"

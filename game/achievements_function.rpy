@@ -84,14 +84,17 @@ init python:
         ##      'platinum' = The final achievement to be granted once all other achievements have been granted.
 
         "finale": Achievement(name=_("Finale?"), message=_("Is that it?"), image='gui/trophy_icon.png', priority=None),
+        "onestar": Achievement(name=_("One Star Performance"), message=_("Broke a leg."), image='gui/trophy_icon.png', priority=None),
         "afraid": Achievement(name=_("Afraid"), message=_("Watch him shiver."), image='gui/trophy_icon.png', priority='hidden'),
         "happy": Achievement(name=_("Happy"), message=_("Watch him smile."), image='gui/trophy_icon.png', priority='hidden'),
         "sad": Achievement(name=_("Sad"), message=_("Watch him cry."), image='gui/trophy_icon.png', priority='hidden'),
+        "violent": Achievement(name=_("Angry"), message=_("Watch them fight."), image='gui/trophy_icon.png', priority='hidden'),
         "collapsed": Achievement(name=_("ERROR:%collapsed%offscript%falling%"), message=_("%watch%her%jump%"), image='gui/trophy_icon.png', priority='hidden'),
         "nude": Achievement(name=_("Crude, Nude and Full a' Tude!"), message=_("get naked"), image='gui/trophy_icon.png', priority=None),
         "legal": Achievement(name=_("this is probably legal and good"), message=_("Work for an apathetic weirdo."), image='gui/trophy_icon.png', priority=None),
         "wfind": Achievement(name=_("Word Find"), message=_("Solve a word search."), image='gui/trophy_icon.png', priority=None),
         "attack": Achievement(name=_("Attack a Police Officer"), message=_("Wait, what-"), image='gui/trophy_icon.png', priority=None),
+        "casa": Achievement(name=_("Casanova"), message=_("Watch them kiss."), image='gui/trophy_icon.png', priority=None),
         "chase": Achievement(name=_("Chase Sequence"), message=_("It's just REALLY hidden, so chill"), image='gui/trophy_icon.png', priority=None),
         "centhusiast": Achievement(name=_("Clock Enthusiast"), message=_("THERE IS NO TIME SYSTEM, ITS JUST TEXT"), image='gui/trophy_icon.png', priority=None),
         "tcritic": Achievement(name=_("Theater Critic"), message=_("See Everything."), image='gui/trophy_icon.png', priority='platinum'),

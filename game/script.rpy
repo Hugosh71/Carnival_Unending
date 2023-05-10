@@ -153,12 +153,13 @@ label clothescheck:
     else:
         "{cps=30}You walk outside, still fully nude after your shower…{/cps}"
         "{cps=30}Either you forgot to put on clothes due to morning lethargy, or you are just a very aggressive nudist.{/cps}"
+        $ Achievement.add(achievement_name['nude'])
         "{cps=30}Either way, as you walk out of your hotel room with a whistle, you hear screams and gasps of the simultaniously surprised and offended locals.{/cps}"
         "{cps=30}One thing leads to another, and you eventually find yourself in the back of a police car, being driven off to the nearest station.{/cps}"
         "{cps=30}Whoops.{/cps}"
         scene black
         with fade
-        $ Achievement.add(achievement_name['nude'])
+        $ Achievement.add(achievement_name['onestar'])
         "{cps=30}Bad Ending: Nudist{/cps}"
         return
 
@@ -464,6 +465,7 @@ label F1:
     pa"{cps=30}Good job, I almost got a customer.{/cps}"
     pa"{cps=30}Here, have 165 money. You’ve kinda earned it.{/cps}"
     "{cps=30}Pale then hands you the aforementioned 165 money for three hours of work.{/cps}"
+    $ Achievement.add(achievement_name['legal'])
     "{cps=30}Certainly not the worst job in the world.{/cps}"
     $ money += 165
     $ choice_F1_made=True
@@ -589,7 +591,7 @@ label C4:
     if arrestresult>95:
         "{cps=30}As you hold out your palms for money, you feel a hand on your shoulder.{/cps}"
         "{cps=30}You turn around and see two police officers standing behind you.{/cps}"
-        "{cps=30}'Singore/Signora, you are aware that begging is banned in Venice.'{/cps}"
+        "{cps=30}'Singore/Signora, you are aware that begging is banned in Venice?'{/cps}"
         "{cps=30}'We are going to request your passport and papers, please.'{/cps}"
         "{cps=30}What do you do?{/cps}"
         menu:
@@ -631,6 +633,7 @@ label ArrestSong:
     "{cps=30}'Every single person in Venice and surrounding territories have entered a trance-like state and have started forming strange, seemingly choreographed dance routines.'{/cps}"
     "{cps=30}'It appears these people have been dancing for three hours straight, and this condition seems to effect anyone who hears a song radiating through the cities plaza and emergency broadcast system.'{/cps}"
     "{cps=30}'More on this incident after the break...'{/cps}"
+    $ Achievement.add(achievement_name['onestar'])
     "{cps=30}Bad Ending: Partied too hard.{/cps}"
     return
         
@@ -648,6 +651,7 @@ label AssaultOfficer:
             "{cps=30}Everything goes dark...{/cps}"
             scene black
             with fade
+            $ Achievement.add(achievement_name['onestar'])
             "{cps=30}Bad Ending: Violence is not the answer.{/cps}"
             return
         "Punch":
@@ -660,6 +664,7 @@ label AssaultOfficer:
             $ Achievement.add(achievement_name['finale'])
             "{cps=30}And so it was, you sprinted out of the city and onto the fastest airplane back home.{/cps}"
             "{cps=30}Part of you is sad that you missed out on a large chunk of your vacation, but most of you is glad that you are not in prison for assaulting two officers.{/cps}"
+            $ Achievement.add(achievement_name['violent'])
             "{cps=30}Ending Six: Violence is the answer.{/cps}"
             return
 
@@ -668,6 +673,7 @@ label BootLicker:
     "{cps=30}The officers both nod at each other and bring you over to their car.{/cps}"
     scene black
     with fade
+    $ Achievement.add(achievement_name['onestar'])
     "{cps=30}Bad Ending: Boot Licker.{/cps}"
     return
 
@@ -676,7 +682,7 @@ label BootKisser:
     $ smoochresult=renpy.random.randint(0,1)
     "{cps=30}You swoop your hair, wink, and do a sexy pose{/cps}"
     "{cps=30}You lean forward to kiss one of them...{/cps}"
-    if smoochresult=1:
+    if smoochresult==1:
         "{cps=30}The officer kisses you back, and holds you in his arms.{/cps}"
         "{cps=30}When your lips seperate, he moves a strand of your hair away from your eyes.{/cps}"
         "{cps=30}'You are the most gorgeous person I have ever met'.{/cps}"
@@ -705,6 +711,7 @@ label BootKisser:
         "{cps=30}Well, damn it.{/cps}"
         scene black
         with fade
+        $ Achievement.add(achievement_name['onestar'])
         "{cps=30}Bad Ending: Rejected.{/cps}"
         
     
@@ -886,7 +893,7 @@ label J4:
     stop music fadeout 2.0
     play sound "audio/AMB_Church_Inside_Crowded.ogg" volume 0.5 fadein 2.0
     play music "audio/Music_1.ogg" volume 0.3 fadein 2.0
-    jump Imenu
+    jump churchmenu
 
 label I2first:
     define po=Character("Poem",color="#F4D0E5")
@@ -1010,7 +1017,7 @@ label M3:
 label M4:
     pat"{cps=30}Okay, addio!{/cps}"
     hide poem
-    jump Imenu
+    jump churchmenu
 
 
 ################## ACT 3

@@ -610,7 +610,7 @@ label C4:
         $ suspicion+=2
         $ beggingresult=renpy.random.randint(1, 10) + moneymod
         $ money+=beggingresult
-        "{cps=30}You got [beggingresult] money.{/cps}"
+        "{cps=30}You got [beggingresult] money!{/cps}"
         "{cps=30}You currently have [money] money.{/cps}"
         $ beggingresult=0
         jump plazamenu
@@ -679,10 +679,10 @@ label BootLicker:
 
 label BootKisser:
     "{cps=30}You decide to utilize your feminine and/or masculine wiles on the officers.{/cps}"
-    $ smoochresult=renpy.random.randint(0,1)
-    "{cps=30}You swoop your hair, wink, and do a sexy pose{/cps}"
+    $ smoochresult=renpy.random.randint(1,4)
+    "{cps=30}You swoop your hair, wink, and do a sexy pose.{/cps}"
     "{cps=30}You lean forward to kiss one of them...{/cps}"
-    if smoochresult==1:
+    if smoochresult>3:
         "{cps=30}The officer kisses you back, and holds you in his arms.{/cps}"
         "{cps=30}When your lips seperate, he moves a strand of your hair away from your eyes.{/cps}"
         "{cps=30}'You are the most gorgeous person I have ever met'.{/cps}"
@@ -694,8 +694,10 @@ label BootKisser:
         "{cps=30}'Mario, what the fuck is wrong with you?'{/cps}"
         "{cps=30}'You know what, fine.'{/cps}"
         "{cps=30}'I'm leaving.'{/cps}"
-        "{cps=30}The officer leaves as Mario holds your body delicately{/cps}"
+        "{cps=30}The officer leaves as Mario holds your body delicately.{/cps}"
         "{cps=30}'You want to have some breakfast in bed?'{/cps}"
+        scene black 
+        with fade
         stop music fadeout 2.0
         play music "audio/Music_2.ogg" volume 0.3 fadein 2.0
         $ Achievement.add(achievement_name['finale'])
@@ -713,6 +715,7 @@ label BootKisser:
         with fade
         $ Achievement.add(achievement_name['onestar'])
         "{cps=30}Bad Ending: Rejected.{/cps}"
+        return
         
     
 ####################### ACT 2

@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 363: expected 'label_name_declare' not found.
-    label --:
-         ^
+File "game/script.rpy", line 374: expected ':' not found.
+    label SecretsMenu
+                     ^
+
+File "game/script.rpy", line 443: reached end of line when expecting ':'.
+    if not choice_F1_made
+                         ^
+
+File "game/script.rpy", line 447: expected statement.
+    else: 
+        ^
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Mon May  8 10:56:11 2023
+Wed May 10 09:38:15 2023

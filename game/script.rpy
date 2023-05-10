@@ -26,6 +26,9 @@ init:
     $ money=0
     $ moneymod=0
     $ beggingresult=0
+    $ suspicion=0
+    $ suspicionmod=0
+    $ arrestchance=0
     default choice_F1_made=False
     
 
@@ -110,28 +113,28 @@ label B1:
     "{cps=30}You put on the outfit, bright colors and tassles envelop you. You still leave a good amount of skin showing, naturally.{/cps}"
 
     $ Vclothes = True
-
+    $ moneymod=2
     jump prologuemenu
 
 label B2:
     "{cps=30}You put on some jeans, a jacket, a t-shirt, and tennis shoes. You also get your water bottle, just in case.{/cps}"
 
     $ Cclothes = True
-
+    $ moneymod=-1
     jump prologuemenu
 
 label B3:
     "{cps=30}You put on sweatpants, a t-shirt, and flip flops. You massage the bags under your eyes lightly, and make a mental note to grab some coffee later.{/cps}"
 
     $ Mclothes = True
-
+    $ moneymod=1
     jump prologuemenu
 
 label B4:
     "{cps=30}You put on an ornate mask you purchased for the carnival, along with a cloak. It feels nice, a bit itchy, but nice.{/cps}"
 
     $ Tclothes = True
-
+    $ moneymod=3
     jump prologuemenu
 
 label nextScene:
@@ -208,6 +211,8 @@ label plazamenu:
                 jump C3
         "I beg for money.":
             jump C4
+
+### Puck's Show
 
 label C1first:
     #change bg Puck
@@ -294,7 +299,8 @@ label D4:
     with fade
     jump plazamenu
     
-    
+### Pale's Shop
+
 label C2first:
     #change bg pale shop
     scene bg caravan
@@ -350,26 +356,103 @@ label E1:
     jump Emenu
 
 label E2:
-    pa"{cps=30}The locals? Sure.{/cps}"
-    pa"{cps=30}There are four locals you should care about:{/cps}"
-    pa"{cps=30}Path, Poem, Puck, and Pray.{/cps}"
-    pa"{cps=30}There, told you about the locals.{/cps}"
-    pa"{cps=30}Anything else?{/cps}"
-    jump Emenu
+    if achievement.has(achievement_name['welcome'].name):
+        pa"{cps=30}The locals?{/cps}"
+        pa"{cps=30}Haven't you met most of them already?{/cps}"
+        pa"{cps=30}Not much more I can tell you about them...{/cps}"
+        pa"{cps=30}Well... there are some things...{/cps}"
+        pa"{cps=30}But I don't give out secrets for free.{/cps}"
+        jump SecretsMenu
+    else:
+        pa"{cps=30}The locals? Sure.{/cps}"
+        pa"{cps=30}There are four locals you should care about:{/cps}"
+        pa"{cps=30}Path, Poem, Puck, and Pray.{/cps}"
+        pa"{cps=30}There, told you about the locals.{/cps}"
+        pa"{cps=30}Anything else?{/cps}"
+        jump Emenu
+
+label SecretsMenu:
+    menu:
+        "Can you tell me Puck's secret for 75 money?":
+            jump PuSec
+        "Can you tell me Pray's secret for 80 money?":
+            jump PrSec
+        "Can you tell me Poem's secret for 90 money?":
+            jump PoSec
+        "Can you tell me Path's secret for 80 money?":
+            jump PaSec
+        "I'm not comfortable with this.":
+            pa"{cps=30}I know.{/cps}"
+            pa"{cps=30}But do you know what else I know about you?{/cps}"
+            pa"{cps=30}I know that you care about seeing things, learning things, watching them.{/cps}"
+            pa"{cps=30}And I am a very competent merchant, meaning I give people what they want.{/cps}"
+            pa"{cps=30}My offer stands.{/cps}"
+            jump Emenu
+
+label PuSec:
+    if money>75:
+        $ money -= 75
+        pa"{cps=30}Puck?{/cps}"
+        pa"{cps=30}He is mellow and kind now, but he used to be very cruel to his friends.{/cps}"
+        pa"{cps=30}When he left home, he buried himself in drugs and vice.{/cps}"
+        pa"{cps=30}Trying, hoping that would wash away the guilt of destroying his family.{/cps}"
+        pa"{cps=30}Once he founded his company, he started disrupting that family aswell.{/cps}"
+        pa"{cps=30}I suppose it's not just the family you find, but the one you keep.{/cps}"
+        jump SecretsMenu
+
+label PrSec:
+    if money>80:
+        $ money -= 80
+        pa"{cps=30}Pray probably has the most secrets out of them all.{/cps}"
+        pa"{cps=30}He used to be in love, deeply and truly.{/cps}"
+        pa"{cps=30}But he was lied to, and hurt in ways I cannot quite describe.{/cps}"
+        pa"{cps=30}Point being, he adopted a daughter afterwards and became a very devout man.{/cps}"
+        pa"{cps=30}And in religion, he found something.{/cps}"
+        pa"{cps=30}With his sheer dedication and fury, the papacy made an exception in his case-{/cps}"
+        pa"{cps=30}Patriarchs and high-ranking members of the church are not allowed to have daughters, but he still got the station he has now.{/cps}"
+        pa"{cps=30}And although I personally find him sour and irritating...{/cps}"
+        pa"{cps=30}I cannot lie, I respect him for pulling himself out of the hole he was in.{/cps}"
+        jump SecretsMenu
+
+label PoSec:
+    if money>90:
+        $ money -= 90
+        pa"{cps=30}Poem is an intresting case.{/cps}"
+        pa"{cps=30}She has seen beyond the stage, into the audience.{/cps}"
+        pa"{cps=30}She has seen you.{/cps}"
+        pa"{cps=30}She is... upset by this discovery{/cps}"
+        pa"{cps=30}Understandable, I suppose.{/cps}"
+        pa"{cps=30}I hope she doesn't do anything rash about it.{/cps}"
+        "{cps=30}The man stifles a laugh.{/cps}"
+        jump SecretsMenu
+
+label PaSec:
+    if money>80:
+        $ money -= 80
+        pa"{cps=30}Ah, Path.{/cps}"
+        pa"{cps=30}He... doesn't really have any secrets.{/cps}"
+        pa"{cps=30}I guess he's kinda...{/cps}"
+        pa"{cps=30}Shy?{/cps}"
+        pa"{cps=30}Look, i'm trying my best but some people are just good and innocent I guess.{/cps}"
+        pa"{cps=30}I don't even think he knows what sex is.{/cps}"
+        pa"{cps=30}Like, physically.{/cps}"
+        pa"{cps=30}It's wild.{/cps}"
+        jump SecretsMenu
 
 label E3:
-    "{cps=30}The strange man looks at you (or at least you presume he does) for a few seconds before responding.{/cps}"
-    pa"{cps=30}Sure! If you wanna do some work for me, I'll give you money.{/cps}"
-    jump Fmenu
+    if not choice_F1_made:
+        "{cps=30}The strange man looks at you (or at least you presume he does) for a few seconds before responding.{/cps}"
+        pa"{cps=30}Sure! If you wanna do some work for me, I'll give you money.{/cps}"
+        jump Fmenu
+    else: 
+        "{cps=30}You can't do that again.{/cps}"
+        jump Emenu
 
 label Fmenu:
     menu:
         "Okay, nothing else to do.":
-            if not choice_F1_made:
-                jump F1
-            else:
-                "{cps=30}You can't do that again.{/cps}"
-                jump Fmenu
+            jump F1
+
         "Uh sorry, I meant free money.":
             jump F2
 
@@ -400,7 +483,7 @@ label E4:
     with fade
     jump plazamenu
 
-
+### Path's Canals
 label C3first:
     define pat=Character("Path",color="#DAC432")
     #change bg Canals
@@ -503,44 +586,12 @@ label G4:
 
 label C4:
     "{cps=30}You start begging for money…{/cps}"
-    if Vclothes==True:
-        $ moneymod=2
-        $ beggingresult=renpy.random.randint(1, 10) + moneymod
-        $ money+=beggingresult
-        "You got [beggingresult] money."
-        "You currently have [money] money."
-        $ beggingresult=0
-        jump plazamenu
-
-        
-    if Cclothes==True:
-        $ moneymod=1
-        $ beggingresult=renpy.random.randint(1, 10) + moneymod
-        $ money+=beggingresult
-        "You got [beggingresult] money."
-        "You currently have [money] money."
-        $ beggingresult=0
-        jump plazamenu
-        
-
-    if Mclothes==True:
-        $ moneymod=-1
-        $ beggingresult=renpy.random.randint(1, 10) + moneymod
-        $ money+=beggingresult
-        "You got [beggingresult] money."
-        "You currently have [money] money."
-        $ beggingresult=0
-        jump plazamenu
-
-    if Tclothes==True:
-        $ moneymod=3
-        $ beggingresult=renpy.random.randint(1, 10) + moneymod
-        $ money+=beggingresult
-        "You got [beggingresult] money."
-        "You currently have [money] money."
-        $ beggingresult=0
-        jump plazamenu
-
+    $ beggingresult=renpy.random.randint(1, 10) + moneymod
+    $ money+=beggingresult
+    "You got [beggingresult] money."
+    "You currently have [money] money."
+    $ beggingresult=0
+    jump plazamenu
     
 ####################### ACT 2
 label Act2:
@@ -985,6 +1036,7 @@ label End1:
     with fade
     stop music fadeout 2.0
     play music "audio/Music_2.ogg" volume 0.3 fadein 2.0
+    $ Achievement.add(achievement_name['finale'])
     "{cps=30}And so it was, Pray and Path may not have got along and certainly would not for years to come, but the two had reached a kind of understanding.{/cps}"
     "{cps=30}Path saw that the patriarch was not as imposing as he seemed, and that Pray was just as, if not more, afraid than he was.{/cps}"
     "{cps=30}And Pray saw that, despite how scary it sounds, It is not just the role of a parent to protect…{/cps}"
@@ -1120,6 +1172,7 @@ label End2:
     with fade
     stop music fadeout 2.0
     play music "audio/Music_2.ogg" volume 0.3 fadein 2.0
+    $ Achievement.add(achievement_name['finale'])
     "{cps=30}And so it was, you three all got food later and discussed the mornings events.{/cps}"
     "{cps=30}Puck never asked for anything in return from Path for what he did, and resolved to never mention it again.{/cps}"
     "{cps=30}Puck also gave Path a lengthy discussion about smarter practices, confidence, respect, and the benefits of online dating.{/cps}"
@@ -1234,6 +1287,7 @@ label End3:
     po"{cps=30}But first, lets finish watching this show.{/cps}"
     stop music fadeout 2.0
     play music "audio/Music_2.ogg" volume 0.3 fadein 2.0
+    $ Achievement.add(achievement_name['finale'])
     "{cps=30}And so it was, Poem and Path sat next to each other, actually interacting for the first time.{/cps}"
     "{cps=30}They did later go to that coffee shop to talk, and they found that they had a lot in common.{/cps}"
     "{cps=30}They both liked similar movies, music, and restaraunts around Venice.{/cps}"

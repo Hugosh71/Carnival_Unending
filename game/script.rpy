@@ -23,6 +23,12 @@ init:
     default PathMet=False
     default PrayMet=False
     default PoemMet=False
+    default coffeeused=False
+    default artsuppliesowned=False
+    default cannoliowned=False
+    default paperowned=False
+    default marionetteowned=False
+    default pendantowned=False
     $ money=0
     $ moneymod=0
     $ beggingresult=0
@@ -31,6 +37,11 @@ init:
     $ arrestresult=0
     $ smoochresult=0
     default choice_F1_made=False
+    palegreets = [
+        pa"{cps=30}Sure. Whaddaya buyin?{/cps}"
+        pa"{cps=30}Lets do buisness...{/cps}"
+        pa"{cps=30}K, just point at what you want.{/cps}"
+    ]
     
 
 ################## Prologue
@@ -209,6 +220,32 @@ label plazamenu:
                 jump C3first
             else:
                 jump C3
+
+        "I use an item.":
+            "{cps=30}You reach into your bag...{/cps}"
+            "{cps=30}What item do you use?{/cps}"
+            menu:
+                "Coffee.":
+                    if not coffeeused: 
+                        jump coffee
+                    else:
+                        "{cps=30}You already did that.{/cps}"
+                        jump plazamenu
+                "Art Supplies." if artsuppliesowned:
+                    "{cps=30}You dont recognize these tools, perhaps a painter could use it better than you?{/cps}"
+                    jump plazamenu
+                "Peice of Paper." if paperowned:
+                    "{cps=30}You pull out the peice of paper...{/cps}"
+                "Cannoli." if cannoliowned:
+                    "{cps=30}You pull out the Cannoli...{/cps}"
+                    "{cps=30}Between this and the coffee, you are starting to question your odd storage habits.{/cps}"
+                    "{cps=30}Regardless, you take a bite of your Cannoli.{/cps}"
+                    "{cps=30}It's...{/cps}"
+                    "{cps=30}Good!{/cps}"
+                    $ Achievement.add(achievement_name['cannoli'])
+                    "{cps=30}Really good.{/cps}"
+                    jump plazamenu
+                "Marionette." if marionetteowned:
         "I beg for money.":
             jump C4
 
@@ -317,17 +354,16 @@ label C2first:
     #Enter Pale
     show pale
     pa"{cps=30}Yo, what do ya want?{/cps}"
-
-    jump Emenu
+    jump palemenu
 
 label C2:
     scene bg caravan
     with fade
     show pale
     p"{cps=30}Yo, what do ya want?{/cps}"
-    jump Emenu
+    jump palemenu
 
-label Emenu:
+label palemenu:
     menu:
         "Can you tell me about yourself?":
             jump E1
@@ -337,6 +373,9 @@ label Emenu:
 
         "Can I have some money?":
             jump E3
+
+        "Can I buy something?":
+            jump shopmenu
            
         "I return to the plaza.":
             stop sound fadeout 2.0
@@ -353,10 +392,10 @@ label E1:
     pa"{cps=30}This is about you.{/cps}"
     pa"{cps=30}And what you want to buy from me.{/cps}"
     pa"{cps=30}‘Hint, Hint’.{/cps}"
-    jump Emenu
+    jump palemenu
 
 label E2:
-    if achievement.has(achievement_name['welcome'].name):
+    if achievement.has(achievement_name['finale'].name):
         pa"{cps=30}The locals?{/cps}"
         pa"{cps=30}Haven't you met most of them already?{/cps}"
         pa"{cps=30}Not much more I can tell you about them...{/cps}"
@@ -369,7 +408,7 @@ label E2:
         pa"{cps=30}Path, Poem, Puck, and Pray.{/cps}"
         pa"{cps=30}There, told you about the locals.{/cps}"
         pa"{cps=30}Anything else?{/cps}"
-        jump Emenu
+        jump palemenu
 
 label SecretsMenu:
     menu:
@@ -387,7 +426,7 @@ label SecretsMenu:
             pa"{cps=30}I know that you care about seeing things, learning things, watching them.{/cps}"
             pa"{cps=30}And I am a very competent merchant, meaning I give people what they want.{/cps}"
             pa"{cps=30}My offer stands.{/cps}"
-            jump Emenu
+            jump palemenu
 
 label PuSec:
     if money>75:
@@ -399,6 +438,8 @@ label PuSec:
         pa"{cps=30}Once he founded his company, he started disrupting that family aswell.{/cps}"
         pa"{cps=30}I suppose it's not just the family you find, but the one you keep.{/cps}"
         jump SecretsMenu
+    else
+        "{cps=30}You do not have enough money for that.{/cps}"
 
 label PrSec:
     if money>80:
@@ -413,6 +454,8 @@ label PrSec:
         pa"{cps=30}And although I personally find him sour and irritating...{/cps}"
         pa"{cps=30}I cannot lie, I respect him for pulling himself out of the hole he was in.{/cps}"
         jump SecretsMenu
+    else
+        "{cps=30}You do not have enough money for that.{/cps}"
 
 label PoSec:
     if money>90:
@@ -425,6 +468,8 @@ label PoSec:
         pa"{cps=30}I hope she doesn't do anything rash about it.{/cps}"
         "{cps=30}The man stifles a laugh.{/cps}"
         jump SecretsMenu
+    else
+        "{cps=30}You do not have enough money for that.{/cps}"
 
 label PaSec:
     if money>80:
@@ -438,6 +483,8 @@ label PaSec:
         pa"{cps=30}Like, physically.{/cps}"
         pa"{cps=30}It's wild.{/cps}"
         jump SecretsMenu
+    else
+        "{cps=30}You do not have enough money for that.{/cps}"
 
 label E3:
     if not choice_F1_made:
@@ -446,13 +493,87 @@ label E3:
         jump Fmenu
     else: 
         "{cps=30}You can't do that again.{/cps}"
-        jump Emenu
+        jump palemenu
+
+label shopmenu:
+    $ chosengreet = renpy.random.choice(palegreets)
+    "[chosengreet]"
+    menu:
+        "{cps=30}You currently have [money] Money. What do you buy?{/cps}"
+        "Art Supplies: 80 Money" if achievement.has(achievement_name['sad'].name):
+            if money>80:
+                $ money -= 80
+                "{cps=30}The man snickers as he hands you the art supplies.{/cps}"
+                $ artsuppliesowned=True
+                jump shopmenu
+            else
+                "{cps=30}You do not have enough money for that.{/cps}"
+                jump shopmenu
+
+        "Peice of Paper: 3 Money":
+            if money>3:
+                $ money -= 3
+                "{cps=30}The man hands you a single peice of paper and a pencil.{/cps}"
+                $ paperowned=True
+                jump shopmenu
+            else
+                "{cps=30}You do not have enough money for that.{/cps}"
+                jump shopmenu
+            
+        "Cannoli: 15 Money":
+            if money>15:
+                $ money -= 15
+                "{cps=30}The man puts a cannoli in your hands.{/cps}"
+                $ cannoliowned=True
+                jump shopmenu
+            else
+                "{cps=30}You do not have enough money for that.{/cps}"
+                jump shopmenu
+
+        "Marionette: 75 Money" if achievement.has(achievement_name['happy'].name):
+            if money>75:
+                $ money -= 75
+                "{cps=30}The man gives you a Marionette.{/cps}"
+                "{cps=30}It looks a bit like you.{/cps}"
+                $ marionetteowned=True
+                jump shopmenu
+            else
+                "{cps=30}You do not have enough money for that.{/cps}"
+                jump shopmenu
+            
+        "Chase Sequence Fund: 15,000,000,000 Money" if achievement.has(achievement_name['afraid'].name):
+            if money>15000000000:
+                $ money -= 15000000000
+                pa"{cps=30}Thanks! We will get started on planning out the fully playable chase sequence.{/cps}"
+                pa"{cps=30}Should take around eight months.{/cps}"
+                $ Achievement.add(achievement_name['chase'])
+                jump shopmenu                
+            else
+                "{cps=30}You do not have enough money for that.{/cps}"
+                jump shopmenu
+
+        "Strange Pendant: 75 Money" if achievement.has(achievement_name['collapsed'].name):
+            if money>75:
+                $ money -= 75
+                "{cps=30}The man hands you the pendant.{/cps}"
+                "{cps=30}It catches the light in an odd way...{/cps}"
+                $ pendantowned=True
+                jump shopmenu
+            else
+                "{cps=30}You do not have enough money for that.{/cps}"
+                jump shopmenu
+                
+        "Stop Shopping":
+            pa"{cps=30}See ya.{/cps}"
+            jump palemenu
+
+
+
 
 label Fmenu:
     menu:
         "Okay, nothing else to do.":
             jump F1
-
         "Uh sorry, I meant free money.":
             jump F2
 
@@ -469,13 +590,13 @@ label F1:
     "{cps=30}Certainly not the worst job in the world.{/cps}"
     $ money += 165
     $ choice_F1_made=True
-    jump Emenu
+    jump palemenu
 
 label F2:
     pa"{cps=30}Oh, cool.{/cps}"
     pa"{cps=30}Not gonna do that though, sorry.{/cps}"
     pa"{cps=30}Offer stands if you wanna accept it later.{/cps}"
-    jump Emenu
+    jump palemenu
 
 label E4:
     pa"{cps=30}Enjoy the carnival, ciao.{/cps}"
@@ -585,6 +706,17 @@ label G4:
     stop sound fadeout 2.0
     jump plazamenu
 
+
+###PlazaItems
+label coffee
+    "{cps=30}You drink the complementary coffee...{/cps}"
+    "{cps=30}You feel 30% more awake!{/cps}"
+    "{cps=30}But you know, deep in your heart...{/cps}"
+    "{cps=30}That this low-quality coffee's aftertaste is going to be in your mouth for an hour.{/cps}"
+    $ coffeeused=True
+    jump plazamenu
+
+###Begging
 label C4:
     "{cps=30}You start begging for money…{/cps}"
     $ arrestresult=renpy.random.randint(1,100) + suspicionmod + suspicion

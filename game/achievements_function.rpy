@@ -97,6 +97,7 @@ init python:
         "casa": Achievement(name=_("Casanova"), message=_("Watch them kiss."), image='gui/trophy_icon.png', priority=None),
         "chase": Achievement(name=_("Chase Sequence"), message=_("It's just REALLY hidden, so chill"), image='gui/trophy_icon.png', priority=None),
         "centhusiast": Achievement(name=_("Clock Enthusiast"), message=_("THERE IS NO TIME SYSTEM, ITS JUST TEXT"), image='gui/trophy_icon.png', priority=None),
+        "cannoli": Achievement(name=_("mmmmMMmm cannoli mmMMmmMm"), message=_("Eat a cannoli"), image='gui/trophy_icon.png', priority=None),
         "tcritic": Achievement(name=_("Theater Critic"), message=_("See Everything."), image='gui/trophy_icon.png', priority='platinum'),
         ## More of this is explained in 'achievement_screen.rpy'.
 

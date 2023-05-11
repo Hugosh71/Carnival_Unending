@@ -37,11 +37,6 @@ init:
     $ arrestresult=0
     $ smoochresult=0
     default choice_F1_made=False
-    $ palegreets =[
-        "{cps=30}Sure. Whaddaya buyin?{/cps}"
-        "{cps=30}Lets do buisness...{/cps}"
-        "{cps=30}K, just point at what you want.{/cps}"
-    ]
     
 
 ################## Prologue
@@ -548,8 +543,7 @@ label E3:
         jump palemenu
 
 label shopmenu:
-    $ chosengreet = renpy.random.choice(palegreets)
-    pa"[chosengreet]"
+    pa"{cps=30}Sure. Whaddaya buyin?{/cps}"
     menu:
         "{cps=30}You currently have [money] Money. What do you buy?{/cps}"
         "Art Supplies: 80 Money" if achievement.has(achievement_name['sad'].name):
@@ -618,9 +612,6 @@ label shopmenu:
         "Stop Shopping":
             pa"{cps=30}See ya.{/cps}"
             jump palemenu
-
-
-
 
 label Fmenu:
     menu:
@@ -960,6 +951,7 @@ label churchmenu:
                     with fade
                     $ Achievement.add(achievement_name['onestar'])
                     "{cps=30}Bad Ending: Sewage Lover.{/cps}"
+                    return
 
 label I1first:
     "{cps=30}An ornate, astounding church meets you. {/cps}"
@@ -1220,6 +1212,69 @@ label M3:
 
 label artend:
     "{cps=30}You hand her the art supplies.{/cps}"
+    po"{cps=30}Oh! Thank you.{/cps}"
+    po"{cps=30}Would you like to paint with me?{/cps}"
+    menu:
+        "Yes":
+            "{cps=30}She smiles and opens up her bag, pulling out a foldable easel.{/cps}"
+            "{cps=30}Over the next few hours, poem and you both set up two small work stations and start painting.{/cps}"
+            "{cps=30}What do you paint?{/cps}"
+            menu:
+                "Something scary":
+                    "{cps=30}You paint something scary...{/cps}"
+                    "{cps=30}You go a bit too far though, and scare yourself so badly that you have a heart attack!{/cps}"
+                    "{cps=30}Whoops.{/cps}"
+                    scene black
+                    with fade
+                    $ Achievement.add(achievement_name['onestar'])
+                    "{cps=30}Bad Ending: Master of Fright{/cps}"
+                    return
+                "Something cute":
+                    "{cps=30}You paint something cute...{/cps}"
+                    "{cps=30}It's a dog and a kitten cuddling.{/cps}"
+                    po"{cps=30}Oh my! What a cute painting!{/cps}"
+                    po"{cps=30}I love dogs!{/cps}"
+                    po"{cps=30}Can I show you my painting{/cps}"
+                    stop music fadeout 2.0
+                    stop sound fadeout 2.0
+                    "let me out let me out let me out let me out let me out let me out let me out let me out let me out let me out"
+                    po"{cps=30}Do you get the meaning? What I am trying to say with this?{/cps}" 
+                    po"{cps=30}I need you to understand this painting, and I would like it if you could talk to me more about it 'tommorow'.{/cps}"
+                    po"{cps=30}Lets just hope that they{/cps}" 
+                    scene black 
+                    with pixellate
+                    return
+                "your mom":
+                    "{cps=30}You paint a portrait of poem's mom...{/cps}"
+                    po"{cps=30}Wow, great job! Who is she?{/cps}"
+                    "{cps=30}You explain that she is Poem's mom.{/cps}"
+                    po"{cps=30}Uh... I dont really know what my mom looks like, so I guess that could be her.{/cps}"
+                    po"{cps=30}But given that your painting is literally just a stick figure with boobs, I also doubt you really know what my mom looks like.{/cps}"
+                    scene black
+                    with fade
+                    $ Achievement.add(achievement_name['onestar'])
+                    "{cps=30}Bad Ending: Abstract Artist{/cps}"
+                    return
+                "Something romantic":
+                    "{cps=30}You paint something romantic...{/cps}"
+                    "{cps=30}Your painting depicts Poem on the gondola with Path.{/cps}"
+                    po"{cps=30}Is that me? Thanks!{/cps}"
+                    po"{cps=30}I like it!{/cps}"
+                    po"{cps=30}Who is that?{/cps}"
+                    "{cps=30}She points at Path in the painting.{/cps}"
+                    "{cps=30}You hand her the letter.{/cps}"
+                    "{cps=30}She takes it, reads it, and starts welling up with tears.{/cps}"
+                    po"{cps=30}This is...{/cps}"
+                    "{cps=30}She looks to her left, as if hearing something far away.{/cps}"
+                    po"{cps=30}I don't want to do this again. Please.{/cps}"
+                    scene black 
+                    with pixellate
+                    return
+
+        "No":
+            "{cps=30}She sighs.{/cps}"
+            po"{cps=30}Okay. Maybe another time?{/cps}"
+            jump Mmenu
 
 label M4:
     pat"{cps=30}Okay, addio!{/cps}"

@@ -89,6 +89,7 @@ init python:
         "happy": Achievement(name=_("Happy"), message=_("Watch him smile."), image='gui/trophy_icon.png', priority='hidden'),
         "sad": Achievement(name=_("Sad"), message=_("Watch him cry."), image='gui/trophy_icon.png', priority='hidden'),
         "violent": Achievement(name=_("Angry"), message=_("Watch them fight."), image='gui/trophy_icon.png', priority='hidden'),
+        "circus": Achievement(name=_("Acting"), message=_("Watch him say goodbye."), image='gui/trophy_icon.png', priority='hidden'),
         "collapsed": Achievement(name=_("ERROR:%collapsed%offscript%falling%"), message=_("%watch%her%jump%"), image='gui/trophy_icon.png', priority='hidden'),
         "nude": Achievement(name=_("Crude, Nude and Full a' Tude!"), message=_("get naked"), image='gui/trophy_icon.png', priority=None),
         "legal": Achievement(name=_("this is probably legal and good"), message=_("Work for an apathetic weirdo."), image='gui/trophy_icon.png', priority=None),

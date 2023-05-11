@@ -2,17 +2,10 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 374: expected ':' not found.
-    label SecretsMenu
-                     ^
-
-File "game/script.rpy", line 443: reached end of line when expecting ':'.
-    if not choice_F1_made
-                         ^
-
-File "game/script.rpy", line 447: expected statement.
-    else: 
-        ^
+File "game/script.rpy", line 41: invalid syntax
+            pa"{cps=30}Sure. Whaddaya buyin?{/cps}"
+               ^
+    
 
 Ren'Py Version: Ren'Py 8.0.3.22090809
-Wed May 10 09:38:15 2023
+Thu May 11 13:12:10 2023

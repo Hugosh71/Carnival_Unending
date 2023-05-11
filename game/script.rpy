@@ -37,10 +37,10 @@ init:
     $ arrestresult=0
     $ smoochresult=0
     default choice_F1_made=False
-    palegreets = [
-        pa"{cps=30}Sure. Whaddaya buyin?{/cps}"
-        pa"{cps=30}Lets do buisness...{/cps}"
-        pa"{cps=30}K, just point at what you want.{/cps}"
+    $ palegreets =[
+        "{cps=30}Sure. Whaddaya buyin?{/cps}"
+        "{cps=30}Lets do buisness...{/cps}"
+        "{cps=30}K, just point at what you want.{/cps}"
     ]
     
 
@@ -246,6 +246,16 @@ label plazamenu:
                     "{cps=30}Really good.{/cps}"
                     jump plazamenu
                 "Marionette." if marionetteowned:
+                    "{cps=30}You pull out the marionette, but you don't really know how to use one.{/cps}"
+                    "{cps=30}Maybe you can get someone to teach you?{/cps}"
+                    jump plazamenu
+                "Pendant." if pendantowned:
+                    "{cps=30}You pull out the pendant...{/cps}"
+                    "{cps=30}It doesnt seem to be doing anything.{/cps}"
+                    "{cps=30}An inscription lies on the back of the pendant.{/cps}"
+                    "{cps=30}It reads: 'Nel sonno, che tu possa trovare risposte. Nei sogni, che le domande dell'universo si risolvano da sole.'{/cps}"
+                    jump plazamenu
+                    
         "I beg for money.":
             jump C4
 
@@ -288,7 +298,10 @@ label Dmenu:
 
         "When is the show?":
             jump D3
-           
+
+        "Can you teach me how to use this puppet?" if marionetteowned:
+            jump circusend
+
         "I return to the plaza.":
             jump D4
             
@@ -307,7 +320,6 @@ label D1:
     "{cps=30}Sadness. His memories of his company are stained by some kind of old wound, some old mistake.{/cps}" 
     p"{cps=30}Yes, well. Nowadays, I find myself as more of a solo act than I used to be…{/cps}" 
     p"{cps=30}But nothing to feel sorrow over! All that matters is the future, eh amico?{/cps}" 
-    
     jump Dmenu
 
 label D2:
@@ -316,8 +328,45 @@ label D2:
     p"{cps=30}However, she is the daughter of Il Patriarca, who is known for excommunicating any boy who shows a glimmer of interest in his daughter.{/cps}"
     p"{cps=30}I hope those two lovebirds figure it out, but I have seen many a boy in Path’s position.{/cps}"
     p"{cps=30}It never ends well.{/cps}"
-
     jump Dmenu
+
+label circusend:
+    "{cps=30}You can see his body language change, he is astounded.{/cps}"
+    p"{cps=30}Of course Amico!{/cps}"
+    p"{cps=30}I'll run through the basics with you...{/cps}"
+    with fade
+    "{cps=30}And he does! He teaches you correct hand positioning, how to control the puppet, how to do a voice...{/cps}"
+    p"{cps=30}Good job! You catch on quite well...{/cps}"
+    "{cps=30}The performer thinks for a moment.{/cps}"
+    p"{cps=30}Say, might you help me with today's show?{/cps}"
+    menu:
+        "Yes!":
+            p"{cps=30}Grazie!{/cps}"
+            p"{cps=30}Let me go through the script with you...{/cps}"
+            scene black
+            with Fade
+            $ Achievement.add(achievement_name['finale'])
+            "{cps=30}And so it was, you and Puck worked together and performed fantastically!{/cps}"
+            "{cps=30}As a duo, you played off each other beautifully (despite your large differences in experience).{/cps}"
+            "{cps=30}The rest of the day flew by, as you and Puck performed show after show...{/cps}"
+            "{cps=30}Later that night, after he gave you your cut of the profits, you talk in his RV.{/cps}"
+            "{cps=30}You both talk about life, about yours pasts, about your dreams, about love.{/cps}"
+            "{cps=30}But eventually... your life outside calls.{/cps}"
+            "{cps=30}And you return to your home country, despite the screaming of your heart.{/cps}"
+            "{cps=30}All performances must end, you suppose.{/cps}"
+            $ Achievement.add(achievement_name['circus'])
+            "{cps=30}Ending Seven: Acting.{/cps}"
+            return
+        "No.":
+            p"{cps=30}Oh... okay...{/cps}"
+            "{cps=30}Puck looks particularly sad...{/cps}"
+            "{cps=30}But this is not the first time this has happened to him.{/cps}"
+            p"{cps=30}I understand, enjoy your vacation.{/cps}"
+            scene black
+            with fade
+            $ Achievement.add(achievement_name['onestar'])
+            "{cps=30}Bad Ending: Bummer.{/cps}"
+            return
 
 label D3:
     p"{cps=30}The show is going to be in four hours, please come back later!{/cps}"
@@ -325,7 +374,6 @@ label D3:
     p"{cps=30}A five act puppet show, with one actor in eight roles!{/cps}"
     "{cps=30}Sounds like an absolute trainwreck…{/cps}"
     "{cps=30}You should see it as soon as possible.{/cps}"
-
     jump Dmenu
 
 label D4:
@@ -414,12 +462,16 @@ label SecretsMenu:
     menu:
         "Can you tell me Puck's secret for 75 money?":
             jump PuSec
+
         "Can you tell me Pray's secret for 80 money?":
             jump PrSec
+
         "Can you tell me Poem's secret for 90 money?":
             jump PoSec
+
         "Can you tell me Path's secret for 80 money?":
             jump PaSec
+
         "I'm not comfortable with this.":
             pa"{cps=30}I know.{/cps}"
             pa"{cps=30}But do you know what else I know about you?{/cps}"
@@ -438,7 +490,7 @@ label PuSec:
         pa"{cps=30}Once he founded his company, he started disrupting that family aswell.{/cps}"
         pa"{cps=30}I suppose it's not just the family you find, but the one you keep.{/cps}"
         jump SecretsMenu
-    else
+    else:
         "{cps=30}You do not have enough money for that.{/cps}"
 
 label PrSec:
@@ -454,7 +506,7 @@ label PrSec:
         pa"{cps=30}And although I personally find him sour and irritating...{/cps}"
         pa"{cps=30}I cannot lie, I respect him for pulling himself out of the hole he was in.{/cps}"
         jump SecretsMenu
-    else
+    else:
         "{cps=30}You do not have enough money for that.{/cps}"
 
 label PoSec:
@@ -468,7 +520,7 @@ label PoSec:
         pa"{cps=30}I hope she doesn't do anything rash about it.{/cps}"
         "{cps=30}The man stifles a laugh.{/cps}"
         jump SecretsMenu
-    else
+    else:
         "{cps=30}You do not have enough money for that.{/cps}"
 
 label PaSec:
@@ -483,7 +535,7 @@ label PaSec:
         pa"{cps=30}Like, physically.{/cps}"
         pa"{cps=30}It's wild.{/cps}"
         jump SecretsMenu
-    else
+    else:
         "{cps=30}You do not have enough money for that.{/cps}"
 
 label E3:
@@ -497,7 +549,7 @@ label E3:
 
 label shopmenu:
     $ chosengreet = renpy.random.choice(palegreets)
-    "[chosengreet]"
+    pa"[chosengreet]"
     menu:
         "{cps=30}You currently have [money] Money. What do you buy?{/cps}"
         "Art Supplies: 80 Money" if achievement.has(achievement_name['sad'].name):
@@ -506,7 +558,7 @@ label shopmenu:
                 "{cps=30}The man snickers as he hands you the art supplies.{/cps}"
                 $ artsuppliesowned=True
                 jump shopmenu
-            else
+            else:
                 "{cps=30}You do not have enough money for that.{/cps}"
                 jump shopmenu
 
@@ -516,7 +568,7 @@ label shopmenu:
                 "{cps=30}The man hands you a single peice of paper and a pencil.{/cps}"
                 $ paperowned=True
                 jump shopmenu
-            else
+            else:
                 "{cps=30}You do not have enough money for that.{/cps}"
                 jump shopmenu
             
@@ -526,7 +578,7 @@ label shopmenu:
                 "{cps=30}The man puts a cannoli in your hands.{/cps}"
                 $ cannoliowned=True
                 jump shopmenu
-            else
+            else:
                 "{cps=30}You do not have enough money for that.{/cps}"
                 jump shopmenu
 
@@ -537,7 +589,7 @@ label shopmenu:
                 "{cps=30}It looks a bit like you.{/cps}"
                 $ marionetteowned=True
                 jump shopmenu
-            else
+            else:
                 "{cps=30}You do not have enough money for that.{/cps}"
                 jump shopmenu
             
@@ -548,7 +600,7 @@ label shopmenu:
                 pa"{cps=30}Should take around eight months.{/cps}"
                 $ Achievement.add(achievement_name['chase'])
                 jump shopmenu                
-            else
+            else:
                 "{cps=30}You do not have enough money for that.{/cps}"
                 jump shopmenu
 
@@ -559,10 +611,10 @@ label shopmenu:
                 "{cps=30}It catches the light in an odd way...{/cps}"
                 $ pendantowned=True
                 jump shopmenu
-            else
+            else:
                 "{cps=30}You do not have enough money for that.{/cps}"
                 jump shopmenu
-                
+
         "Stop Shopping":
             pa"{cps=30}See ya.{/cps}"
             jump palemenu
@@ -708,9 +760,9 @@ label G4:
 
 
 ###PlazaItems
-label coffee
+label coffee:
     "{cps=30}You drink the complementary coffee...{/cps}"
-    "{cps=30}You feel 30% more awake!{/cps}"
+    "{cps=30}You feel 30 percent more awake!{/cps}"
     "{cps=30}But you know, deep in your heart...{/cps}"
     "{cps=30}That this low-quality coffee's aftertaste is going to be in your mouth for an hour.{/cps}"
     $ coffeeused=True
@@ -894,6 +946,20 @@ label churchmenu:
                 jump I2first
             else:
                 jump I2
+        "I jump into the canal water":
+            "{cps=30}You jump into the can-{/cps}"
+            "{cps=30}Wait what?{/cps}"
+            "{cps=30}Why?{/cps}"
+            menu:
+                "its funny":
+                    "{cps=30}It really isn't.{/cps}"
+                    "{cps=30}So... you jump into the canal water. I guess.{/cps}"
+                    "{cps=30}Its really cold and gross and uncomfortable now{/cps}"
+                    "{cps=30}You start to drown...{/cps}"
+                    scene black
+                    with fade
+                    $ Achievement.add(achievement_name['onestar'])
+                    "{cps=30}Bad Ending: Sewage Lover.{/cps}"
 
 label I1first:
     "{cps=30}An ornate, astounding church meets you. {/cps}"
@@ -1091,6 +1157,9 @@ label Mmenu:
 
         "Give her the letter.":
             jump M3
+
+        "Give her the Art Supplies" if artsuppliesowned:
+            jump artend
            
         "Leave.":
             jump M4
@@ -1148,6 +1217,9 @@ label M3:
     pat"{cps=30}I guess that makes… sense?{/cps}"
     "{cps=30}Path starts to paddle over to the plaza through the canals.{/cps}"
     jump End3
+
+label artend:
+    "{cps=30}You hand her the art supplies.{/cps}"
 
 label M4:
     pat"{cps=30}Okay, addio!{/cps}"

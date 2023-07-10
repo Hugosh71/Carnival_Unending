@@ -32,4 +32,4 @@ Screenshots
 <p align="center"><img src="cp2.png"></p>
 <p align="center"><img src="cp3.png"></p>
 <p align="center"><img src="cp4.png"></p>
-<p align="center"><img src="cp5.png"></p>
+
